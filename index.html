@@ -3365,7 +3365,7 @@
         ctx.lineTo(x, h - map.pad);
         ctx.stroke();
         label(ctx, "one vertical hit -> function", 40, h - 34);
-      } else if (type === "horizontal" || type === "inverseExist") {
+      } else if (type === "horizontal") {
         plot(ctx, map, x => x, "#00a8a8", 4);
         plot(ctx, map, x => 0.35 * x * x - 1.2, "#ff6f61", 4);
         ctx.strokeStyle = "#2077ff";
@@ -3376,6 +3376,8 @@
         ctx.lineTo(w - map.pad, y);
         ctx.stroke();
         label(ctx, "horizontal hit once -> one-to-one", 40, h - 34);
+      } else if (type === "inverseExist") {
+        drawInverseExistCheck(ctx, w, h, t);
       } else {
         label(ctx, "Algebraic proof", 40, 60, "#173754");
         label(ctx, "Let f(a) = f(b)", 60, 110);
@@ -3384,6 +3386,75 @@
         label(ctx, "For 3 - 4x^2: a = +/- b", 60, 260, "#ff6f61");
         label(ctx, "Two inputs can share one output.", 60, 305);
       }
+    }
+
+    function drawInverseExistCheck(ctx, w, h, t) {
+      const margin = 34;
+      const gap = 28;
+      const panelW = (w - margin * 2 - gap) / 2;
+      const panelH = h - 96;
+      const top = 34;
+      const yValue = 0.75 + Math.sin(t * 0.75) * 0.18;
+
+      const makeMap = (x, y) => ({
+        pad: 26,
+        x: x,
+        y: y,
+        w: panelW,
+        h: panelH,
+        x0: x + panelW / 2,
+        y0: y + panelH / 2,
+        sx: (panelW - 52) / 7,
+        sy: (panelH - 52) / 5.4
+      });
+
+      const drawPanel = (map, title, color, fn, status, statusColor, hitXs) => {
+        ctx.save();
+        ctx.fillStyle = "rgba(255,255,255,0.68)";
+        ctx.strokeStyle = "rgba(16,32,51,0.16)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(map.x, map.y, map.w, map.h, 14);
+        ctx.fill();
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(map.x, map.y);
+        const local = { pad: map.pad, w: map.w, h: map.h, x0: map.w / 2, y0: map.h / 2, sx: map.sx, sy: map.sy };
+        axes(ctx, map.w, map.h, { pad: map.pad, x0: local.x0, y0: local.y0 });
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(local.pad, local.pad, local.w - local.pad * 2, local.h - local.pad * 2);
+        ctx.clip();
+        plot(ctx, local, fn, color, 5);
+        const y = local.y0 - yValue * local.sy;
+        ctx.strokeStyle = "#2077ff";
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.moveTo(local.pad, y);
+        ctx.lineTo(local.w - local.pad, y);
+        ctx.stroke();
+        hitXs.forEach(x => {
+          const px = local.x0 + x * local.sx;
+          ctx.fillStyle = "#102033";
+          ctx.beginPath();
+          ctx.arc(px, y, 6, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.restore();
+        label(ctx, title, 16, 24, "#173754");
+        label(ctx, status, 16, local.h - 16, statusColor);
+        ctx.restore();
+      };
+
+      drawPanel(makeMap(margin, top), "one-to-one", "#00a8a8", x => 0.65 * x + 0.2, "PASS: inverse exists", "#00a8a8", [(yValue - 0.2) / 0.65]);
+      const parabolaA = 0.28;
+      const parabolaK = -1.45;
+      const roots = Math.sqrt(Math.max(0, (yValue - parabolaK) / parabolaA));
+      drawPanel(makeMap(margin + panelW + gap, top), "repeated y-value", "#ff6f61", x => parabolaA * x * x + parabolaK, "FAIL: two outputs", "#ff6f61", [-roots, roots]);
+
+      label(ctx, "Horizontal line test: one hit means the function can be reversed safely.", margin, h - 38, "#173754");
     }
 
     function drawFamilies(ctx, w, h, type, t) {

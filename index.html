@@ -1491,6 +1491,16 @@
         font-size: 0.78rem;
       }
     }
+
+    .desmos-lab-card { grid-column: 1 / -1; background: rgba(255,255,255,0.92); border: 1px solid rgba(16,32,51,0.12); border-radius: 8px; padding: 18px; box-shadow: 0 18px 40px rgba(16,32,51,0.08); display: grid; grid-template-columns: minmax(320px, 1.25fr) minmax(260px, 0.75fr); gap: 18px; }
+    .desmos-canvas-wrap { min-height: 340px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,168,168,0.22); background: linear-gradient(135deg, #f8ffff, #fff8f0); }
+    .desmos-canvas-wrap canvas { width: 100%; height: 340px; display: block; }
+    .desmos-controls { display: grid; gap: 12px; align-content: start; }
+    .desmos-controls label { font-weight: 800; color: #173754; display: grid; gap: 6px; }
+    .desmos-controls input[type="range"], .desmos-controls select { width: 100%; accent-color: var(--teal); }
+    .desmos-equation { font-family: Georgia, serif; font-size: 1.18rem; color: #0b2d55; background: rgba(216,255,243,0.58); border: 1px solid rgba(0,168,168,0.22); border-radius: 8px; padding: 12px; }
+    @media (max-width: 760px) { .desmos-lab-card { grid-template-columns: 1fr; } }
+
   </style>
 </head>
 <body>
@@ -1515,83 +1525,24 @@
         </div>
         <h1>FIND THE<br>F(x)s</h1>
         <p class="subtitle">
-          Learn Functions and Graphs, then explore Trigonometric Functions through animated graphs, visual notes, an AI-style tutor, voice explanations, and a pixel route game.
+          Learn to recognise function types, sketch their graphs, and read domain and range directly from the graph using the Matriculation Topic 5 framework.
         </p>
-        <div class="chapter-tabs" role="tablist" aria-label="Chapter selector">
-          <button class="tab-btn" data-chapter="functions" aria-label="Open Chapter 1 Functions and Graphs">
-            <span class="chapter-kicker">Chapter 1</span>
-            <span class="chapter-title">Functions and Graphs</span>
+        <div class="chapter-tabs" role="tablist" aria-label="Sketching graph selector">
+          <button class="tab-btn" data-chapter="functions" aria-label="Open Sketching Graph Based on Function">
+            <span class="chapter-kicker">Chapter</span>
+            <span class="chapter-title">Sketching Graph Based on Function</span>
             <span class="chapter-icons" aria-hidden="true">
-              <span class="chapter-mini">
-                <svg viewBox="0 0 100 54">
-                  <text x="35" y="12">f(x)=&radic;x</text>
-                  <path class="mini-axis" d="M18 43H86M24 48V16" />
-                  <path class="mini-mark mini-blue" d="M24 43C31 29 43 25 52 23C62 20 73 18 83 15" />
-                </svg>
-              </span>
-              <span class="chapter-mini">
-                <svg viewBox="0 0 100 54">
-                  <ellipse class="mini-fill" cx="28" cy="29" rx="18" ry="20" />
-                  <ellipse class="mini-fill" cx="74" cy="29" rx="18" ry="20" />
-                  <text x="12" y="12">D</text>
-                  <text x="68" y="12">R</text>
-                  <text x="25" y="24">-1</text>
-                  <text x="26" y="36">1</text>
-                  <text x="27" y="48">4</text>
-                  <text x="72" y="27">5</text>
-                  <text x="72" y="42">3</text>
-                  <path class="mini-mark mini-green" d="M43 22L62 25" />
-                  <path class="mini-mark mini-green" d="M43 33L61 39" />
-                  <path class="mini-mark mini-green" d="M43 45L61 27" />
-                </svg>
-              </span>
-              <span class="chapter-mini">
-                <svg viewBox="0 0 100 54">
-                  <path class="mini-axis" d="M18 45H88M24 49V10" />
-                  <path class="mini-mark mini-coral mini-dash" d="M16 47L80 8" />
-                  <path class="mini-mark mini-blue" d="M20 39C37 39 47 31 53 18C56 13 58 10 61 7" />
-                  <path class="mini-mark mini-gold" d="M50 48C50 36 57 27 68 22C75 19 82 18 88 18" />
-                  <text x="55" y="14">f</text>
-                  <text x="70" y="30">f-1</text>
-                </svg>
-              </span>
+              <span class="chapter-mini"><svg viewBox="0 0 100 54"><path class="mini-axis" d="M16 42H88M24 48V10" /><path class="mini-mark mini-blue" d="M18 24H86" /><text x="63" y="20">y=k</text></svg></span>
+              <span class="chapter-mini"><svg viewBox="0 0 100 54"><path class="mini-axis" d="M14 43H88M50 48V8" /><path class="mini-mark mini-coral" d="M24 15C35 42 66 42 78 15" /><path class="mini-mark mini-green" d="M18 43L50 16L84 43" /></svg></span>
+              <span class="chapter-mini"><svg viewBox="0 0 100 54"><path class="mini-axis" d="M14 43H88M28 48V8" /><path class="mini-mark mini-blue" d="M16 40C34 39 46 35 55 23C60 16 64 10 70 7" /><path class="mini-mark mini-green" d="M42 49C42 36 50 26 64 21C73 18 82 18 88 17" /></svg></span>
             </span>
           </button>
-          <button class="tab-btn" data-chapter="trig" aria-label="Open Chapter 2 Trigonometric Functions">
-            <span class="chapter-kicker">Chapter 2</span>
-            <span class="chapter-title">Trigonometric Functions</span>
+          <button class="tab-btn" data-chapter="desmos" aria-label="Open Desmos Graph Adjuster">
+            <span class="chapter-kicker">Practice</span>
+            <span class="chapter-title">Desmos Graph Adjuster</span>
             <span class="chapter-icons" aria-hidden="true">
-              <span class="chapter-mini">
-                <svg viewBox="0 0 100 54">
-                  <path class="mini-axis" d="M13 16H88M13 30H88M13 44H88" />
-                  <path class="mini-mark mini-coral" d="M14 16C24 6 36 6 46 16S68 26 82 16" />
-                  <path class="mini-mark mini-blue" d="M14 30C27 39 39 39 50 30S70 20 84 30" />
-                  <path class="mini-mark mini-green" d="M16 48C24 42 28 37 30 32M45 48C54 42 58 37 60 32M74 48C83 42 87 37 89 32" />
-                </svg>
-              </span>
-              <span class="chapter-mini">
-                <svg viewBox="0 0 100 54">
-                  <path class="mini-axis" d="M18 27H82M50 50V5" />
-                  <circle class="mini-outline mini-teal" cx="50" cy="27" r="20" />
-                  <path class="mini-mark mini-coral" d="M50 27L66 15" />
-                  <circle cx="50" cy="7" r="2.8" fill="currentColor" />
-                  <circle cx="70" cy="27" r="2.8" fill="currentColor" />
-                  <circle cx="50" cy="47" r="2.8" fill="currentColor" />
-                  <circle cx="30" cy="27" r="2.8" fill="currentColor" />
-                  <text x="69" y="14">&theta;</text>
-                </svg>
-              </span>
-              <span class="chapter-mini">
-                <svg viewBox="0 0 100 54">
-                  <path class="mini-mark mini-green" d="M16 41H78" />
-                  <path class="mini-mark mini-blue" d="M78 41V12" />
-                  <path class="mini-mark mini-coral" d="M16 41L78 12" />
-                  <path class="mini-axis" d="M68 41V31H78" />
-                  <path class="mini-axis" d="M24 41A12 12 0 0 1 28 32" />
-                  <text x="30" y="50">Adjacent</text>
-                  <text x="54" y="23">Hyp.</text>
-                </svg>
-              </span>
+              <span class="chapter-mini"><svg viewBox="0 0 100 54"><path class="mini-axis" d="M14 43H88M26 48V8" /><path class="mini-mark mini-blue" d="M18 39C35 39 47 30 55 17C58 13 60 10 63 8" /><path class="mini-mark mini-coral mini-dash" d="M16 43H86" /><text x="66" y="17">a</text></svg></span>
+              <span class="chapter-mini"><svg viewBox="0 0 100 54"><path class="mini-axis" d="M13 27H88M50 48V7" /><path class="mini-mark mini-coral" d="M14 27C24 13 36 13 46 27S68 41 84 27" /><path class="mini-mark mini-blue" d="M14 35C27 44 39 44 50 35S70 26 84 35" /></svg></span>
             </span>
           </button>
         </div>
@@ -1608,8 +1559,8 @@
     <section id="subtopics" class="hidden">
       <div class="section-head">
         <div>
-          <h2 id="chapterTitle">Functions and Graphs</h2>
-          <p id="chapterIntro">Start with the idea of a function, then move through tests, graph families, domain and range, inverse functions, and exponential-logarithmic pairs.</p>
+          <h2 id="chapterTitle">Sketching Graph Based on Function</h2>
+          <p id="chapterIntro">Recognise each function by its graph shape, then read domain and range from the picture.</p>
         </div>
         <button class="ghost-btn" id="jumpTop">Back to Title</button>
       </div>
@@ -1721,449 +1672,688 @@
 
   <script>
     const chapters = {
-      functions: {
-        title: "Functions and Graphs",
-        intro: "Start with the idea of a function, then move through tests, graph families, domain and range, inverse functions, and exponential-logarithmic pairs.",
-        topics: [
-          {
-            id: "function-basics",
-            title: "Functions, Relations, Domain and Range",
-            summary: "Understand what makes a relation a function and how domain, codomain and range connect.",
-            color: "linear-gradient(135deg, #d8fff3, #e6eeff 48%, #f5fbff)",
-            visual: "mappingClean",
-            slides: [
-              {
-                title: "What Is a Function?",
-                text: "A function f is a relation from set X to set Y where each input in X is matched with one and only one output in Y.",
-                keys: ["One-to-one and many-to-one relations can be functions.", "One-to-many and many-to-many relations are not functions.", "The input set is the domain."],
-                chips: ["f: X -> Y", "each x has exactly one y", "function = rule"],
-                visual: "mapping",
-                caption: "Each input arrow must land on exactly one output."
-              },
-              {
-                title: "Domain, Codomain and Range",
-                text: "The domain is the set of all allowed inputs. The codomain is the target set. The range is the set of outputs that are actually used.",
-                keys: ["Domain: all x-values you may use.", "Range: y-values produced by the function.", "Range is usually a subset of the codomain."],
-                chips: ["D_f = {a,b,c,d}", "R_f = {1,3,4}", "codomain = {1,2,3,4,5}"],
-                visual: "range",
-                caption: "The highlighted outputs show the actual range."
-              },
-              {
-                title: "Onto Function",
-                text: "A function is onto when every element in the codomain is hit by at least one input from the domain.",
-                keys: ["Every target value must be used.", "Onto means range equals codomain.", "If one target is unused, the function is not onto."],
-                chips: ["range = codomain", "surjective", "no unused output"],
-                visual: "onto",
-                caption: "The animation checks whether every output receives an arrow."
-              }
-            ],
-            questions: [
-              { q: "Which relation type is always not a function?", a: "One-to-many", choices: ["One-to-one", "Many-to-one"] },
-              { q: "The set of all allowed input values is called the...", a: "Domain", choices: ["Range", "Codomain"] },
-              { q: "A function is onto when its range equals its...", a: "Codomain", choices: ["Axis", "Gradient"] },
-              { q: "Can many-to-one be a function?", a: "Yes", choices: ["No", "Only for trigonometry"] },
-              { q: "The actual output values form the...", a: "Range", choices: ["Domain", "Relation type"] }
+      "functions": {
+            "title": "Sketching Graph Based on Function",
+            "intro": "Use the Topic 5 graph families from the PDF: identify the parent shape, mark restrictions, then read domain and range from the graph.",
+            "topics": [
+                  {
+                        "id": "parent-polynomial-graphs",
+                        "title": "Parent Graphs: Constant, Linear, Quadratic and Cubic",
+                        "summary": "Recognise the four basic graph shapes and their domain-range fingerprints.",
+                        "color": "linear-gradient(135deg, #d8fff3, #e6eeff 48%, #f5fbff)",
+                        "visual": "parentMini",
+                        "slides": [
+                              {
+                                    "title": "Constant Function",
+                                    "text": "A constant function f(x)=k is a horizontal line. The graph accepts every x-value, but the output is always k.",
+                                    "keys": [
+                                          "Domain: R or (-infinity, infinity).",
+                                          "Range: {k}.",
+                                          "Shape: horizontal line y=k."
+                                    ],
+                                    "chips": [
+                                          "f(x)=k",
+                                          "D=R",
+                                          "R={k}"
+                                    ],
+                                    "visual": "constantGraph",
+                                    "caption": "Domain stretches left and right forever; range is one horizontal height."
+                              },
+                              {
+                                    "title": "Linear Function",
+                                    "text": "A linear function f(x)=ax+b, a not equal 0, is a straight line. Positive a rises, negative a falls.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "Range: R.",
+                                          "b is the y-intercept."
+                                    ],
+                                    "chips": [
+                                          "f(x)=ax+b",
+                                          "a>0 rises",
+                                          "a<0 falls"
+                                    ],
+                                    "visual": "linearGraph",
+                                    "caption": "A non-horizontal line covers all x-values and all y-values."
+                              },
+                              {
+                                    "title": "Quadratic Function",
+                                    "text": "A quadratic function f(x)=ax^2+bx+c forms a parabola. The vertex gives the minimum when a>0 and maximum when a<0.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "If a>0, range is [k, infinity).",
+                                          "If a<0, range is (-infinity, k]."
+                                    ],
+                                    "chips": [
+                                          "parabola",
+                                          "vertex (h,k)",
+                                          "turning point"
+                                    ],
+                                    "visual": "quadraticRange",
+                                    "caption": "The vertex controls the range boundary."
+                              },
+                              {
+                                    "title": "Cubic Function",
+                                    "text": "A cubic function f(x)=ax^3+bx^2+cx+d, a not equal 0, has an S-like graph and takes all real x and y values.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "Range: R.",
+                                          "Leading coefficient controls end direction."
+                                    ],
+                                    "chips": [
+                                          "cubic",
+                                          "S-shape",
+                                          "D=R, R=R"
+                                    ],
+                                    "visual": "cubicGraph",
+                                    "caption": "The cubic graph continues through every x-value and every y-value."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "The range of f(x)=k is...",
+                                    "a": "{k}",
+                                    "choices": [
+                                          "R",
+                                          "(0, infinity)"
+                                    ]
+                              },
+                              {
+                                    "q": "For f(x)=ax+b, a not equal 0, the graph is a...",
+                                    "a": "Straight line",
+                                    "choices": [
+                                          "Parabola",
+                                          "V-shape"
+                                    ]
+                              },
+                              {
+                                    "q": "A quadratic graph with a>0 has a...",
+                                    "a": "Minimum",
+                                    "choices": [
+                                          "Maximum",
+                                          "Vertical asymptote"
+                                    ]
+                              },
+                              {
+                                    "q": "The basic cubic graph has range...",
+                                    "a": "R",
+                                    "choices": [
+                                          "[0, infinity)",
+                                          "{k}"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "absolute-rational-graphs",
+                        "title": "Absolute and Rational Graphs",
+                        "summary": "Compare V-shapes with reciprocal branches and their different restrictions.",
+                        "color": "linear-gradient(135deg, #fff2df, #e8f9ff 58%, #f3fff1)",
+                        "visual": "absoluteRationalMini",
+                        "slides": [
+                              {
+                                    "title": "Absolute Function",
+                                    "text": "The absolute function f(x)=|x-a| makes a V-shape with vertex at x=a.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "Range: [0, infinity) for the basic positive graph.",
+                                          "The vertex is the lowest point."
+                                    ],
+                                    "chips": [
+                                          "|x-a|",
+                                          "V-shape",
+                                          "vertex"
+                                    ],
+                                    "visual": "absoluteGraph",
+                                    "caption": "The corner tells you where the minimum occurs."
+                              },
+                              {
+                                    "title": "Rational Function",
+                                    "text": "The rational function f(x)=1/(ax-b) has two branches separated by a vertical asymptote.",
+                                    "keys": [
+                                          "Domain: (-infinity,b/a) union (b/a,infinity).",
+                                          "Range: (-infinity,0) union (0,infinity).",
+                                          "Vertical asymptote: x=b/a."
+                                    ],
+                                    "chips": [
+                                          "1/(ax-b)",
+                                          "x != b/a",
+                                          "y != 0"
+                                    ],
+                                    "visual": "rationalGraph",
+                                    "caption": "The graph approaches the asymptotes but never touches them."
+                              },
+                              {
+                                    "title": "Graphical Domain and Range",
+                                    "text": "For absolute graphs, scan the V from left to right and bottom to top. For rational graphs, notice the missing x-value and missing y-value.",
+                                    "keys": [
+                                          "Domain is horizontal coverage.",
+                                          "Range is vertical coverage.",
+                                          "Asymptotes show excluded values."
+                                    ],
+                                    "chips": [
+                                          "scan x",
+                                          "scan y",
+                                          "excluded values"
+                                    ],
+                                    "visual": "absoluteRational",
+                                    "caption": "The graph itself tells which x and y values are allowed."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "Which function gives a V-shaped graph?",
+                                    "a": "Absolute function",
+                                    "choices": [
+                                          "Cubic function",
+                                          "Rational function"
+                                    ]
+                              },
+                              {
+                                    "q": "For f(x)=1/(ax-b), x cannot equal...",
+                                    "a": "b/a",
+                                    "choices": [
+                                          "a/b",
+                                          "0 always"
+                                    ]
+                              },
+                              {
+                                    "q": "The basic reciprocal graph never reaches y=...",
+                                    "a": "0",
+                                    "choices": [
+                                          "1",
+                                          "-1"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "surd-graphs",
+                        "title": "Surd Graphs and Domain Restrictions",
+                        "summary": "Use the starting point of square-root graphs to identify domain and range.",
+                        "color": "linear-gradient(135deg, #e8fff7, #fff8de 56%, #edf2ff)",
+                        "visual": "surdMini",
+                        "slides": [
+                              {
+                                    "title": "y = sqrt(x-a)",
+                                    "text": "For y=sqrt(x-a), the graph starts at x=a and moves to the right above the x-axis.",
+                                    "keys": [
+                                          "Domain: [a, infinity).",
+                                          "Range: [0, infinity).",
+                                          "Starting point: (a,0)."
+                                    ],
+                                    "chips": [
+                                          "sqrt(x-a)",
+                                          "x>=a",
+                                          "y>=0"
+                                    ],
+                                    "visual": "surdRightUp",
+                                    "caption": "The root begins when the inside becomes zero."
+                              },
+                              {
+                                    "title": "y = -sqrt(x-a)",
+                                    "text": "A negative sign outside reflects the square-root graph below the x-axis.",
+                                    "keys": [
+                                          "Domain: [a, infinity).",
+                                          "Range: (-infinity,0].",
+                                          "Same starting x-value."
+                                    ],
+                                    "chips": [
+                                          "-sqrt(x-a)",
+                                          "x>=a",
+                                          "y<=0"
+                                    ],
+                                    "visual": "surdRightDown",
+                                    "caption": "The domain stays the same; the range flips downward."
+                              },
+                              {
+                                    "title": "y = sqrt(a-x)",
+                                    "text": "For y=sqrt(a-x), the graph starts at x=a and moves to the left.",
+                                    "keys": [
+                                          "Domain: (-infinity,a].",
+                                          "Range: [0, infinity).",
+                                          "The inside needs a-x >= 0."
+                                    ],
+                                    "chips": [
+                                          "sqrt(a-x)",
+                                          "x<=a",
+                                          "y>=0"
+                                    ],
+                                    "visual": "surdLeftUp",
+                                    "caption": "Changing x-a to a-x changes the direction of the graph."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "For y=sqrt(x-a), the domain is...",
+                                    "a": "[a, infinity)",
+                                    "choices": [
+                                          "(-infinity,a]",
+                                          "R"
+                                    ]
+                              },
+                              {
+                                    "q": "For y=-sqrt(x-a), the range is...",
+                                    "a": "(-infinity,0]",
+                                    "choices": [
+                                          "[0, infinity)",
+                                          "R"
+                                    ]
+                              },
+                              {
+                                    "q": "For y=sqrt(a-x), x must be...",
+                                    "a": "x <= a",
+                                    "choices": [
+                                          "x >= a",
+                                          "x != a"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "exponential-log-graphs",
+                        "title": "Exponential and Logarithmic Graphs",
+                        "summary": "Study e^x and ln x as parent graphs with different domains, ranges and asymptotes.",
+                        "color": "linear-gradient(135deg, #e2fff2, #f1f7ff 52%, #fff6df)",
+                        "visual": "expLogMini",
+                        "slides": [
+                              {
+                                    "title": "Exponential Function",
+                                    "text": "The exponential parent graph y=e^x is defined for every real x and always stays above the x-axis.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "Range: (0, infinity).",
+                                          "Horizontal asymptote: y=0."
+                                    ],
+                                    "chips": [
+                                          "y=e^x",
+                                          "D=R",
+                                          "R=(0,infinity)"
+                                    ],
+                                    "visual": "expPdf",
+                                    "caption": "The curve grows quickly and never touches y=0."
+                              },
+                              {
+                                    "title": "Logarithmic Function",
+                                    "text": "The natural logarithm y=ln x is only defined for x>0 and has a vertical asymptote at x=0.",
+                                    "keys": [
+                                          "Domain: (0, infinity).",
+                                          "Range: R.",
+                                          "Vertical asymptote: x=0."
+                                    ],
+                                    "chips": [
+                                          "y=ln x",
+                                          "x>0",
+                                          "R=R"
+                                    ],
+                                    "visual": "logPdf",
+                                    "caption": "The log graph crosses the x-axis at (1,0)."
+                              },
+                              {
+                                    "title": "Reflections in the PDF",
+                                    "text": "The PDF also shows reflected forms such as e^-x, -e^x, ln(-x), and -ln x. Reflection changes the position and range direction.",
+                                    "keys": [
+                                          "Negative outside reflects in the x-axis.",
+                                          "Negative inside reflects in the y-axis.",
+                                          "Asymptotes help identify the graph."
+                                    ],
+                                    "chips": [
+                                          "e^-x",
+                                          "-e^x",
+                                          "ln(-x)",
+                                          "-ln x"
+                                    ],
+                                    "visual": "expLogPdf",
+                                    "caption": "Use reflection to recognise related exponential and logarithmic shapes."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "The range of y=e^x is...",
+                                    "a": "(0, infinity)",
+                                    "choices": [
+                                          "R",
+                                          "(-infinity,0)"
+                                    ]
+                              },
+                              {
+                                    "q": "The domain of y=ln x is...",
+                                    "a": "(0, infinity)",
+                                    "choices": [
+                                          "R",
+                                          "(-infinity,0)"
+                                    ]
+                              },
+                              {
+                                    "q": "The graph y=ln x has vertical asymptote...",
+                                    "a": "x=0",
+                                    "choices": [
+                                          "y=0",
+                                          "x=1"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "trigonometric-graphs",
+                        "title": "Trigonometric Graphs: sin, cos and tan",
+                        "summary": "Read amplitude, period, range, intercepts and asymptotes from trigonometric graphs.",
+                        "color": "linear-gradient(135deg, #eaf7ff, #fff0f0 52%, #f5fff2)",
+                        "visual": "trigMini",
+                        "slides": [
+                              {
+                                    "title": "Sine Graph",
+                                    "text": "The graph y=sin x has one period from 0 to 2pi, range [-1,1], and x-intercepts at n pi.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "Range: [-1,1].",
+                                          "Period: 2pi."
+                                    ],
+                                    "chips": [
+                                          "sin x",
+                                          "amplitude 1",
+                                          "period 2pi"
+                                    ],
+                                    "visual": "sin",
+                                    "caption": "Sine begins at the origin and completes one wave by 2pi."
+                              },
+                              {
+                                    "title": "Cosine Graph",
+                                    "text": "The graph y=cos x also has period 2pi and range [-1,1], but it starts at y=1.",
+                                    "keys": [
+                                          "Domain: R.",
+                                          "Range: [-1,1].",
+                                          "y-intercept: 1."
+                                    ],
+                                    "chips": [
+                                          "cos x",
+                                          "starts at 1",
+                                          "period 2pi"
+                                    ],
+                                    "visual": "cos",
+                                    "caption": "Cosine is shifted compared with sine."
+                              },
+                              {
+                                    "title": "Tangent Graph",
+                                    "text": "The graph y=tan x has period pi and vertical asymptotes at x=pi/2+n pi.",
+                                    "keys": [
+                                          "Domain excludes pi/2+n pi.",
+                                          "Range: R.",
+                                          "Period: pi."
+                                    ],
+                                    "chips": [
+                                          "tan x",
+                                          "asymptotes",
+                                          "period pi"
+                                    ],
+                                    "visual": "tan",
+                                    "caption": "Tangent repeats between its vertical asymptotes."
+                              },
+                              {
+                                    "title": "Amplitude and Period",
+                                    "text": "For y=a sin(bx+c)+d or y=a cos(bx+c)+d, amplitude is |a| and period is 2pi/|b|.",
+                                    "keys": [
+                                          "Amplitude: |a|.",
+                                          "Period: 2pi/|b|.",
+                                          "d moves the midline."
+                                    ],
+                                    "chips": [
+                                          "|a|",
+                                          "2pi/|b|",
+                                          "midline y=d"
+                                    ],
+                                    "visual": "amplitude",
+                                    "caption": "Changing a stretches the graph vertically."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "The range of y=sin x is...",
+                                    "a": "[-1,1]",
+                                    "choices": [
+                                          "R",
+                                          "(0, infinity)"
+                                    ]
+                              },
+                              {
+                                    "q": "The period of y=tan x is...",
+                                    "a": "pi",
+                                    "choices": [
+                                          "2pi",
+                                          "pi/2"
+                                    ]
+                              },
+                              {
+                                    "q": "For y=a sin(bx+c)+d, amplitude is...",
+                                    "a": "|a|",
+                                    "choices": [
+                                          "b",
+                                          "d"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "transformations-domain-range",
+                        "title": "Transformations and Graph-Based Domain/Range",
+                        "summary": "Use shifts, reflections and stretches to sketch transformed graphs and read their domains and ranges.",
+                        "color": "linear-gradient(135deg, #f2ebff, #e7fbff 56%, #fff9e8)",
+                        "visual": "transformMini",
+                        "slides": [
+                              {
+                                    "title": "Transformation Checklist",
+                                    "text": "Start from the parent graph, then apply vertical stretch, reflection, horizontal shift and vertical shift.",
+                                    "keys": [
+                                          "a controls vertical stretch/reflection.",
+                                          "x-h shifts left or right.",
+                                          "+k shifts up or down."
+                                    ],
+                                    "chips": [
+                                          "a f(x-h)+k",
+                                          "reflect",
+                                          "shift"
+                                    ],
+                                    "visual": "transformLab",
+                                    "caption": "A transformed graph is still recognisable from its parent shape."
+                              },
+                              {
+                                    "title": "Read Domain from the Graph",
+                                    "text": "Domain is the set of x-values covered by the graph. Scan from left to right and mark missing points or asymptotes.",
+                                    "keys": [
+                                          "Use interval notation.",
+                                          "Surd and log graphs have restricted x-values.",
+                                          "Rational graphs exclude asymptotes."
+                                    ],
+                                    "chips": [
+                                          "left to right",
+                                          "excluded x",
+                                          "asymptote"
+                                    ],
+                                    "visual": "domainScan",
+                                    "caption": "The horizontal coverage gives the domain."
+                              },
+                              {
+                                    "title": "Read Range from the Graph",
+                                    "text": "Range is the set of y-values reached by the graph. Scan from bottom to top and look for minimum, maximum or missing y-values.",
+                                    "keys": [
+                                          "Quadratic has a vertex boundary.",
+                                          "Constant has one y-value.",
+                                          "Exponential never reaches y=0."
+                                    ],
+                                    "chips": [
+                                          "bottom to top",
+                                          "minimum",
+                                          "maximum"
+                                    ],
+                                    "visual": "rangeScan",
+                                    "caption": "The vertical coverage gives the range."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "To read domain from a graph, scan...",
+                                    "a": "Left to right",
+                                    "choices": [
+                                          "Bottom to top",
+                                          "Only the y-axis"
+                                    ]
+                              },
+                              {
+                                    "q": "To read range from a graph, scan...",
+                                    "a": "Bottom to top",
+                                    "choices": [
+                                          "Left to right",
+                                          "Only the x-axis"
+                                    ]
+                              },
+                              {
+                                    "q": "In a f(x-h)+k, k moves the graph...",
+                                    "a": "Up or down",
+                                    "choices": [
+                                          "Only wider",
+                                          "Only reflected"
+                                    ]
+                              }
+                        ]
+                  }
             ]
-          },
-          {
-            id: "line-tests",
-            title: "Vertical and Horizontal Line Tests",
-            summary: "Use line tests to decide whether a graph is a function and whether it is one-to-one.",
-            color: "linear-gradient(135deg, #d8f6ff, #f4e3ff 58%, #fff7fb)",
-            visual: "lineTestsClean",
-            slides: [
-              {
-                title: "Vertical Line Test",
-                text: "A graph represents y = f(x) if every vertical line cuts the graph at one point only.",
-                keys: ["One vertical hit means one output for that x.", "Two vertical hits means the same x gives two y-values.", "A circle fails this test."],
-                chips: ["function test", "x -> one y", "vertical line"],
-                visual: "vertical",
-                caption: "The moving vertical line shows whether one x has more than one y."
-              },
-              {
-                title: "Horizontal Line Test",
-                text: "A function is one-to-one if every horizontal line cuts the graph at one point only.",
-                keys: ["One-to-one means different inputs give different outputs.", "A straight line with nonzero gradient is one-to-one.", "A full parabola is not one-to-one."],
-                chips: ["one-to-one", "y = k", "horizontal line"],
-                visual: "horizontal",
-                caption: "The moving horizontal line checks whether a y-value repeats."
-              },
-              {
-                title: "Algebraic Check",
-                text: "To prove one-to-one algebraically, let f(a) = f(b). If this always leads to a = b, the function is one-to-one.",
-                keys: ["For f(x) = 7x + 9, f(a)=f(b) gives a=b.", "For f(x)=3-4x^2, f(a)=f(b) gives a=+/-b.", "Two possible inputs mean not one-to-one."],
-                chips: ["f(a)=f(b)", "a=b", "inverse can exist"],
-                visual: "algebra",
-                caption: "Algebra and graph tests tell the same story."
-              }
-            ],
-            questions: [
-              { q: "A graph fails the vertical line test when a vertical line cuts it at...", a: "More than one point", choices: ["No point", "Exactly one point"] },
-              { q: "The horizontal line test is used to check whether a function is...", a: "One-to-one", choices: ["Constant", "Even only"] },
-              { q: "Which graph usually fails the horizontal line test?", a: "A full parabola", choices: ["A non-horizontal straight line", "y = 7x + 9"] },
-              { q: "If f(a)=f(b) always implies a=b, the function is...", a: "One-to-one", choices: ["Not defined", "Many-to-many"] }
-            ]
-          },
-          {
-            id: "basic-graphs",
-            title: "Basic Graph Families",
-            summary: "Meet constant, linear, quadratic, cubic, absolute, rational, surd, exponential and logarithmic graphs.",
-            color: "linear-gradient(135deg, #e5fbff, #eff7e7 50%, #fff4de)",
-            visual: "surdFamiliesClean",
-            slides: [
-              {
-                title: "Power Function Shapes",
-                text: "Power functions include constant, linear, quadratic and cubic graphs. Their shapes are building blocks for many transformations.",
-                keys: ["Constant: f(x)=k.", "Linear: f(x)=x gives a straight line.", "Quadratic: f(x)=x^2 gives a U-shape.", "Cubic: f(x)=x^3 gives an S-shape."],
-                chips: ["k", "x", "x^2", "x^3"],
-                visual: "power",
-                caption: "The family changes as the exponent changes."
-              },
-              {
-                title: "Sharp, Split and Root Shapes",
-                text: "Absolute, rational and surd functions have special features such as corners, asymptotes and starting points.",
-                keys: ["Absolute: f(x)=|x| has a V-shape.", "Rational: f(x)=1/x has two branches and asymptotes.", "Surd: f(x)=sqrt(x) starts at x=0."],
-                chips: ["|x|", "1/x", "sqrt(x)"],
-                visual: "special",
-                caption: "Each shape reveals an important restriction or behavior."
-              },
-              {
-                title: "Growth and Logarithm",
-                text: "Exponential graphs grow quickly, while logarithmic graphs grow slowly and exist only for positive inputs.",
-                keys: ["Exponential: f(x)=e^x.", "Logarithmic: f(x)=ln x.", "They are inverse graph partners."],
-                chips: ["e^x", "ln x", "reflection in y=x"],
-                visual: "expLog",
-                caption: "The two curves mirror each other across y=x."
-              }
-            ],
-            questions: [
-              { q: "Which graph has a V-shape?", a: "Absolute function", choices: ["Rational function", "Logarithmic function"] },
-              { q: "Which function has two separated branches?", a: "f(x)=1/x", choices: ["f(x)=x^2", "f(x)=sqrt(x)"] },
-              { q: "The basic quadratic graph is...", a: "f(x)=x^2", choices: ["f(x)=x", "f(x)=ln x"] },
-              { q: "The graph of f(x)=sqrt(x) starts at...", a: "x=0", choices: ["x=-1", "all real x"] }
-            ]
-          },
-          {
-            id: "domain-range",
-            title: "Domain and Range Methods",
-            summary: "Find domain and range using graphical and algebraic approaches for different function types.",
-            color: "linear-gradient(135deg, #efe7ff, #e7fbff 56%, #f8fff5)",
-            visual: "domainFamiliesClean",
-            slides: [
-              {
-                title: "Graphical Approach",
-                text: "Read domain by scanning the graph from left to right. Read range by scanning from bottom to top.",
-                keys: ["Domain is the x-coverage.", "Range is the y-coverage.", "Endpoints, holes and asymptotes matter."],
-                chips: ["left -> right", "bottom -> top", "interval notation"],
-                visual: "domainScan",
-                caption: "The colored sweep shows x-coverage and y-coverage."
-              },
-              {
-                title: "Common Domain and Range Patterns",
-                text: "Constant, linear and cubic functions have simple domains. Quadratic, rational and surd functions need more care.",
-                keys: ["Constant: domain R, range {k}.", "Linear and cubic: domain R, range R.", "Quadratic: range starts at minimum or ends at maximum.", "Surd sqrt(x-a): domain x >= a."],
-                chips: ["R", "{k}", "[k, infinity)", "x >= a"],
-                visual: "patterns",
-                caption: "Each function type has a domain-range fingerprint."
-              },
-              {
-                title: "Algebraic Restrictions",
-                text: "Use the formula to find restrictions. Denominators cannot be zero, and even roots need non-negative radicands.",
-                keys: ["For 1/(x-a), x cannot equal a.", "For sqrt(x-a), x must be at least a.", "For ln(x-a), x must be greater than a."],
-                chips: ["denominator not 0", "inside root >= 0", "inside ln > 0"],
-                visual: "restrictions",
-                caption: "The forbidden x-values are marked before the graph appears."
-              }
-            ],
-            questions: [
-              { q: "To read domain from a graph, scan from...", a: "Left to right", choices: ["Top to bottom", "Only the y-axis"] },
-              { q: "The range of f(x)=k is...", a: "{k}", choices: ["All real numbers", "(0, infinity)"] },
-              { q: "For f(x)=1/(x-a), x cannot equal...", a: "a", choices: ["0 only", "1 only"] },
-              { q: "For f(x)=sqrt(x-a), the domain is...", a: "x >= a", choices: ["x < a", "all real x"] }
-            ]
-          },
-          {
-            id: "inverse-functions",
-            title: "Inverse Functions",
-            summary: "Learn when an inverse exists and how to find it using algebra and reflection.",
-            color: "linear-gradient(135deg, #dcfff5, #edf2ff 52%, #f6e8ff)",
-            visual: "inversePairClean",
-            slides: [
-              {
-                title: "When Does an Inverse Exist?",
-                text: "An inverse function f^-1(x) exists if and only if f(x) is one-to-one.",
-                keys: ["Use the horizontal line test first.", "If a y-value repeats, the inverse would give two outputs.", "A one-to-one function can be reversed safely."],
-                chips: ["f^-1 exists", "one-to-one", "horizontal test"],
-                visual: "inverseExist",
-                caption: "Only the one-to-one graph passes the inverse check."
-              },
-              {
-                title: "Finding an Inverse Algebraically",
-                text: "Replace f(x) with y, swap x and y, then solve for y. The final y is f^-1(x).",
-                keys: ["Example: f(x)=5x+3.", "Let y=5x+3.", "Swap: x=5y+3.", "Solve: f^-1(x)=(x-3)/5."],
-                chips: ["swap x and y", "solve for y", "(x-3)/5"],
-                visual: "inverseAlgebra",
-                caption: "The steps reverse the input-output machine."
-              },
-              {
-                title: "Graph Reflection",
-                text: "The graphs of f and f^-1 are reflections of each other in the line y=x.",
-                keys: ["The point (a,b) becomes (b,a).", "The line y=x is the mirror.", "Exponential and logarithmic graphs use this idea."],
-                chips: ["(a,b) -> (b,a)", "y=x", "mirror"],
-                visual: "inverseReflect",
-                caption: "Points flip across the symmetry line y=x."
-              }
-            ],
-            questions: [
-              { q: "An inverse function exists if f is...", a: "One-to-one", choices: ["Many-to-many", "Only constant"] },
-              { q: "To find an inverse, after writing y=f(x), you should...", a: "Swap x and y", choices: ["Square both sides", "Ignore the domain"] },
-              { q: "The graph of an inverse reflects in the line...", a: "y=x", choices: ["x=0", "y=0"] },
-              { q: "For f(x)=5x+3, f^-1(x) is...", a: "(x-3)/5", choices: ["5x-3", "(x+3)/5"] }
-            ]
-          },
-          {
-            id: "exp-log",
-            title: "Exponential and Logarithmic Functions",
-            summary: "Compare e^x and ln x, their domains, ranges, intercepts, asymptotes and inverse relationship.",
-            color: "linear-gradient(135deg, #e5fff8, #eaf2ff 58%, #f2e9ff)",
-            visual: "expLogClean",
-            slides: [
-              {
-                title: "Exponential Function",
-                text: "The basic exponential function y=e^x has domain all real numbers and range y>0.",
-                keys: ["Domain: (-infinity, infinity).", "Range: (0, infinity).", "Horizontal asymptote: y=0.", "It crosses the y-axis at (0,1)."],
-                chips: ["y=e^x", "D_f=R", "R_f=(0,infinity)"],
-                visual: "expOnly",
-                caption: "The curve stays above the x-axis and grows fast."
-              },
-              {
-                title: "Logarithmic Function",
-                text: "The basic logarithmic function y=ln x has domain x>0 and range all real numbers.",
-                keys: ["Domain: (0, infinity).", "Range: (-infinity, infinity).", "Vertical asymptote: x=0.", "It crosses the x-axis at (1,0)."],
-                chips: ["y=ln x", "D_f=(0,infinity)", "R_f=R"],
-                visual: "logOnly",
-                caption: "The curve lives to the right of the y-axis."
-              },
-              {
-                title: "Inverse Pair",
-                text: "Exponential and logarithmic functions are inverses. Their graphs are reflections of one another in y=x.",
-                keys: ["e^x and ln x undo each other.", "The point (0,1) on e^x matches (1,0) on ln x.", "Use quadrant, intercept and asymptote to sketch."],
-                chips: ["e^(ln x)=x", "ln(e^x)=x", "mirror line"],
-                visual: "expLogPair",
-                caption: "The dashed line y=x is the mirror between the two functions."
-              }
-            ],
-            questions: [
-              { q: "The range of y=e^x is...", a: "(0, infinity)", choices: ["All real numbers", "(-infinity, 0)"] },
-              { q: "The domain of y=ln x is...", a: "(0, infinity)", choices: ["All real numbers", "(-infinity, 0)"] },
-              { q: "Exponential and logarithmic functions are...", a: "Inverses", choices: ["Always equal", "Unrelated"] },
-              { q: "The graph y=ln x has vertical asymptote...", a: "x=0", choices: ["y=0", "x=1"] }
-            ]
-          }
-        ]
       },
-      trig: {
-        title: "Trigonometric Functions",
-        intro: "Explore sine, cosine and tangent graphs, transformations, ratios, special angles, complementary angles and identities.",
-        topics: [
-          {
-            id: "trig-graphs",
-            title: "Graphs of sin x, cos x and tan x",
-            summary: "Learn the basic shape, period, amplitude and asymptotes of the main trigonometric graphs.",
-            color: "linear-gradient(135deg, #ffe2a9, #d7f7ff)",
-            visual: "trig",
-            slides: [
-              {
-                title: "Sine Graph",
-                text: "The graph y=sin x starts at 0, rises to 1, returns to 0, falls to -1, then returns to 0 over one period.",
-                keys: ["Amplitude: 1.", "Period: 2 pi.", "Range: [-1,1].", "Domain: all real x."],
-                chips: ["sin 0=0", "sin(pi/2)=1", "sin(3pi/2)=-1"],
-                visual: "sin",
-                caption: "The point travels along one full sine wave."
-              },
-              {
-                title: "Cosine Graph",
-                text: "The graph y=cos x starts at 1, falls to -1, then returns to 1 over one period.",
-                keys: ["Amplitude: 1.", "Period: 2 pi.", "Range: [-1,1].", "It is a sine graph shifted left by pi/2."],
-                chips: ["cos 0=1", "cos pi=-1", "period 2pi"],
-                visual: "cos",
-                caption: "Cosine begins at its maximum value."
-              },
-              {
-                title: "Tangent Graph",
-                text: "The graph y=tan x has period pi and vertical asymptotes where cos x = 0.",
-                keys: ["Period: pi.", "Range: all real numbers.", "Asymptotes: x=pi/2+k pi.", "Domain excludes pi/2+k pi."],
-                chips: ["tan x", "period pi", "vertical asymptotes"],
-                visual: "tan",
-                caption: "Tangent repeats between vertical asymptotes."
-              }
-            ],
-            questions: [
-              { q: "The amplitude of y=sin x is...", a: "1", choices: ["2 pi", "pi"] },
-              { q: "The period of y=cos x is...", a: "2 pi", choices: ["pi", "1"] },
-              { q: "The graph y=tan x has period...", a: "pi", choices: ["2 pi", "1"] },
-              { q: "The range of y=sin x is...", a: "[-1,1]", choices: ["All real numbers", "(0,infinity)"] }
+      "desmos": {
+            "title": "Desmos Graph Adjuster",
+            "intro": "Use slider-style controls to test how parameters change graph shape, domain, range, asymptotes, amplitude and period.",
+            "topics": [
+                  {
+                        "id": "desmos-polynomial",
+                        "title": "Try Linear and Quadratic Changes",
+                        "summary": "Move sliders for a, b, c and d to see slope, turning point and vertical shifts change.",
+                        "color": "linear-gradient(135deg, #e7f7ff, #fff7e3 55%, #f2fff2)",
+                        "visual": "desmosPolyMini",
+                        "slides": [
+                              {
+                                    "title": "Polynomial Slider Practice",
+                                    "text": "Use the graph adjuster below to compare y=ax+b and y=a(x-b)^2+c. Notice slope, reflection and vertex movement.",
+                                    "keys": [
+                                          "a changes steepness and reflection.",
+                                          "b moves the graph horizontally.",
+                                          "c or d moves it vertically."
+                                    ],
+                                    "chips": [
+                                          "linear",
+                                          "quadratic",
+                                          "sliders"
+                                    ],
+                                    "visual": "desmosPoly",
+                                    "caption": "The slider graph lets you test graph transformations quickly."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "Increasing |a| usually makes the graph...",
+                                    "a": "Steeper or narrower",
+                                    "choices": [
+                                          "Disappear",
+                                          "Always horizontal"
+                                    ]
+                              },
+                              {
+                                    "q": "In y=a(x-b)^2+c, c shifts the graph...",
+                                    "a": "Up or down",
+                                    "choices": [
+                                          "Left only",
+                                          "Changes period"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "desmos-exp-log",
+                        "title": "Try Exponential and Logarithmic Changes",
+                        "summary": "Compare growth, reflection, shift and asymptotes using e^x and ln x families.",
+                        "color": "linear-gradient(135deg, #e0fff4, #edf2ff 52%, #fff5df)",
+                        "visual": "desmosExpLogMini",
+                        "slides": [
+                              {
+                                    "title": "Exponential and Log Slider Practice",
+                                    "text": "Adjust the parent graph to see how vertical shifts move asymptotes and how logarithmic graphs keep x-restrictions.",
+                                    "keys": [
+                                          "Exponential domain is usually R.",
+                                          "Logarithm needs positive input.",
+                                          "Asymptotes guide the sketch."
+                                    ],
+                                    "chips": [
+                                          "e^x",
+                                          "ln x",
+                                          "asymptote"
+                                    ],
+                                    "visual": "desmosExpLog",
+                                    "caption": "Compare growth and logarithmic restriction in one place."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "The basic y=e^x graph has asymptote...",
+                                    "a": "y=0",
+                                    "choices": [
+                                          "x=0",
+                                          "x=1"
+                                    ]
+                              },
+                              {
+                                    "q": "The basic y=ln x graph needs...",
+                                    "a": "x>0",
+                                    "choices": [
+                                          "all x",
+                                          "x<0 only"
+                                    ]
+                              }
+                        ]
+                  },
+                  {
+                        "id": "desmos-trig",
+                        "title": "Try Trigonometric Changes",
+                        "summary": "Use sliders to see amplitude, period and midline changes for sine and cosine graphs.",
+                        "color": "linear-gradient(135deg, #eef7ff, #fff0f8 52%, #f8fff0)",
+                        "visual": "desmosTrigMini",
+                        "slides": [
+                              {
+                                    "title": "Trigonometric Slider Practice",
+                                    "text": "For y=a sin(bx+c)+d, the slider a changes amplitude, b changes period, c shifts horizontally and d moves the midline.",
+                                    "keys": [
+                                          "Amplitude: |a|.",
+                                          "Period: 2pi/|b|.",
+                                          "Midline: y=d."
+                                    ],
+                                    "chips": [
+                                          "a",
+                                          "b",
+                                          "c",
+                                          "d"
+                                    ],
+                                    "visual": "desmosTrig",
+                                    "caption": "Trig sliders make amplitude and period easier to see."
+                              }
+                        ],
+                        "questions": [
+                              {
+                                    "q": "For y=a sin(bx+c)+d, amplitude is...",
+                                    "a": "|a|",
+                                    "choices": [
+                                          "b",
+                                          "c"
+                                    ]
+                              },
+                              {
+                                    "q": "The period is...",
+                                    "a": "2pi/|b|",
+                                    "choices": [
+                                          "|a|",
+                                          "d"
+                                    ]
+                              }
+                        ]
+                  }
             ]
-          },
-          {
-            id: "trig-transformations",
-            title: "Trigonometric Transformations",
-            summary: "See how a, b, c and d change amplitude, period, phase shift and vertical shift.",
-            color: "linear-gradient(135deg, #c7ffe7, #ffd8ef)",
-            visual: "trigTransform",
-            slides: [
-              {
-                title: "The Transformation Form",
-                text: "For y = a sin(bx + c) + d, each parameter controls a visible change in the graph.",
-                keys: ["|a| changes amplitude.", "b changes period.", "c changes horizontal shift.", "d changes vertical shift."],
-                chips: ["amplitude=|a|", "period=2pi/|b|", "midline y=d"],
-                visual: "transformSine",
-                caption: "The wave stretches, compresses and moves as the parameters change."
-              },
-              {
-                title: "Amplitude and Reflection",
-                text: "A larger |a| makes the wave taller. A negative a reflects the graph in the x-axis.",
-                keys: ["y=2sin x has amplitude 2.", "y=-sin x is upside down.", "Range becomes [d-|a|, d+|a|]."],
-                chips: ["a=2", "a=-1", "range shift"],
-                visual: "amplitude",
-                caption: "The blue wave grows taller, then flips."
-              },
-              {
-                title: "Period and Shift",
-                text: "For sine and cosine, b changes the period to 2pi/|b|. The value d moves the whole graph up or down.",
-                keys: ["y=sin(2x) completes a cycle faster.", "y=sin(x)+1 has midline y=1.", "Phase shift comes from bx+c."],
-                chips: ["period", "phase shift", "vertical shift"],
-                visual: "periodShift",
-                caption: "The wave compresses horizontally and moves vertically."
-              }
-            ],
-            questions: [
-              { q: "In y=a sin(bx+c)+d, |a| controls...", a: "Amplitude", choices: ["Period", "Domain"] },
-              { q: "In y=a sin(bx+c)+d, d controls...", a: "Vertical shift", choices: ["Reflection only", "Asymptote only"] },
-              { q: "The period of y=sin(2x) is...", a: "pi", choices: ["2 pi", "4 pi"] },
-              { q: "A negative value of a causes...", a: "Reflection in the x-axis", choices: ["No graph", "Only a domain change"] }
-            ]
-          },
-          {
-            id: "trig-ratios",
-            title: "Trigonometric Ratios and Identities",
-            summary: "Use a right triangle to define sin, cos, tan, cosec, sec and cot.",
-            color: "linear-gradient(135deg, #d9ebff, #fff0bc)",
-            visual: "triangle",
-            slides: [
-              {
-                title: "Right Triangle Ratios",
-                text: "For an acute angle theta in a right triangle, sine, cosine and tangent compare opposite, adjacent and hypotenuse sides.",
-                keys: ["sin theta = opposite / hypotenuse.", "cos theta = adjacent / hypotenuse.", "tan theta = opposite / adjacent."],
-                chips: ["SOH", "CAH", "TOA"],
-                visual: "triangleRatios",
-                caption: "The side labels change as the angle is highlighted."
-              },
-              {
-                title: "Reciprocal Ratios",
-                text: "Cosecant, secant and cotangent are reciprocals of sine, cosine and tangent.",
-                keys: ["cosec theta = 1/sin theta.", "sec theta = 1/cos theta.", "cot theta = 1/tan theta."],
-                chips: ["cosec", "sec", "cot"],
-                visual: "reciprocal",
-                caption: "Each reciprocal ratio sits opposite its partner."
-              },
-              {
-                title: "Core Identity",
-                text: "The most important Pythagorean identity is sin^2 theta + cos^2 theta = 1.",
-                keys: ["It comes from a right triangle and the unit circle.", "Divide by cos^2 theta to get 1 + tan^2 theta = sec^2 theta.", "Divide by sin^2 theta to get cot^2 theta + 1 = cosec^2 theta."],
-                chips: ["sin^2 + cos^2 = 1", "1 + tan^2 = sec^2", "1 + cot^2 = cosec^2"],
-                visual: "identity",
-                caption: "The identity links every point on the unit circle."
-              }
-            ],
-            questions: [
-              { q: "sin theta equals...", a: "opposite / hypotenuse", choices: ["adjacent / hypotenuse", "opposite / adjacent"] },
-              { q: "tan theta equals...", a: "opposite / adjacent", choices: ["adjacent / opposite", "hypotenuse / adjacent"] },
-              { q: "sec theta is the reciprocal of...", a: "cos theta", choices: ["sin theta", "tan theta"] },
-              { q: "The identity sin^2 theta + cos^2 theta equals...", a: "1", choices: ["0", "tan theta"] }
-            ]
-          },
-          {
-            id: "special-angles",
-            title: "Complementary and Special Angles",
-            summary: "Connect 30, 45, 60 and 90 degrees with exact trigonometric values.",
-            color: "linear-gradient(135deg, #ffd7c7, #cfffea)",
-            visual: "specialAngles",
-            slides: [
-              {
-                title: "Complementary Angles",
-                text: "Two angles are complementary if their sum is 90 degrees. Sine and cosine swap across complementary angles.",
-                keys: ["sin theta = cos(90 degrees - theta).", "cos theta = sin(90 degrees - theta).", "cot theta = tan(90 degrees - theta)."],
-                chips: ["theta + phi = 90 degrees", "sin <-> cos", "tan <-> cot"],
-                visual: "complementary",
-                caption: "The two acute angles share the same triangle."
-              },
-              {
-                title: "Special Angle Triangles",
-                text: "The 45-45-90 and 30-60-90 triangles explain exact values for common angles.",
-                keys: ["45-45-90 sides: 1, 1, sqrt(2).", "30-60-90 sides: 1, sqrt(3), 2.", "Use ratios to fill sin, cos and tan values."],
-                chips: ["30 degrees", "45 degrees", "60 degrees"],
-                visual: "specialTriangles",
-                caption: "Exact values come directly from the side lengths."
-              },
-              {
-                title: "Useful Exact Values",
-                text: "Memorize the special angle values so you can solve equations and sketch graphs faster.",
-                keys: ["sin 30 degrees = 1/2.", "cos 60 degrees = 1/2.", "tan 45 degrees = 1.", "tan 90 degrees is undefined."],
-                chips: ["1/2", "sqrt(3)/2", "1/sqrt(3)", "undefined"],
-                visual: "valueTable",
-                caption: "The table highlights one row at a time."
-              }
-            ],
-            questions: [
-              { q: "If two angles are complementary, their sum is...", a: "90 degrees", choices: ["180 degrees", "45 degrees"] },
-              { q: "sin theta equals...", a: "cos(90 degrees - theta)", choices: ["sin(90 degrees - theta)", "tan(90 degrees - theta)"] },
-              { q: "tan 45 degrees equals...", a: "1", choices: ["0", "undefined"] },
-              { q: "In a 30-60-90 triangle, the hypotenuse can be...", a: "2", choices: ["sqrt(3)", "1"] }
-            ]
-          },
-          {
-            id: "positive-negative",
-            title: "Positive, Negative Angles and Identities",
-            summary: "Understand clockwise and anticlockwise rotations and use identities to simplify expressions.",
-            color: "linear-gradient(135deg, #e2ddff, #fdf1b8)",
-            visual: "unitCircle",
-            slides: [
-              {
-                title: "Positive and Negative Angles",
-                text: "An anticlockwise rotation gives a positive angle. A clockwise rotation gives a negative angle.",
-                keys: ["Positive angle: rotate anticlockwise.", "Negative angle: rotate clockwise.", "Use the unit circle to decide signs."],
-                chips: ["+theta", "-theta", "rotation"],
-                visual: "angleRotation",
-                caption: "The ray rotates both directions from the positive x-axis."
-              },
-              {
-                title: "Negative Angle Identities",
-                text: "Sine and tangent are odd functions, while cosine is an even function.",
-                keys: ["sin(-theta) = -sin theta.", "cos(-theta) = cos theta.", "tan(-theta) = -tan theta."],
-                chips: ["odd", "even", "sign change"],
-                visual: "negativeIdentities",
-                caption: "Reflecting across the x-axis changes y, but not x."
-              },
-              {
-                title: "Pythagorean Identity Family",
-                text: "Use sin^2 theta + cos^2 theta = 1 to form related identities for tan, sec, cot and cosec.",
-                keys: ["sin^2 theta + cos^2 theta = 1.", "1 + tan^2 theta = sec^2 theta.", "1 + cot^2 theta = cosec^2 theta."],
-                chips: ["identity family", "divide by cos^2", "divide by sin^2"],
-                visual: "identityFamily",
-                caption: "One identity produces two more by division."
-              }
-            ],
-            questions: [
-              { q: "An anticlockwise rotation produces a...", a: "Positive angle", choices: ["Negative angle", "Zero angle only"] },
-              { q: "sin(-theta) equals...", a: "-sin theta", choices: ["sin theta", "cos theta"] },
-              { q: "cos(-theta) equals...", a: "cos theta", choices: ["-cos theta", "-tan theta"] },
-              { q: "1 + tan^2 theta equals...", a: "sec^2 theta", choices: ["cosec^2 theta", "sin^2 theta"] }
-            ]
-          }
-        ]
       }
-    };
+};
 
     const state = {
       chapter: "functions",
@@ -2942,19 +3132,48 @@
           <div class="topic-body">
             <h3>${index + 1}. ${topic.title}</h3>
             <p>${topic.summary}</p>
-            <button class="primary-btn">Start Learning</button>
+            <button class="primary-btn">${state.chapter === "desmos" ? "Open Adjuster" : "Start Learning"}</button>
           </div>
         `;
         card.querySelector("button").addEventListener("click", () => openTopic(topic));
         el.topicGrid.appendChild(card);
         requestAnimationFrame(() => drawMini(card.querySelector("canvas"), topic.visual));
       });
+      if (state.chapter === "desmos") renderDesmosAdjuster();
+    }
+
+    function renderDesmosAdjuster() {
+      const lab = document.createElement("article");
+      lab.className = "desmos-lab-card";
+      const sliders = ["a", "b", "c", "d"].map((name, i) => `<label>${name}: <span id="${name}Val">${i === 0 ? "1.0" : "0.0"}</span><input id="${name}Slider" type="range" min="-4" max="4" step="0.1" value="${i === 0 ? "1" : "0"}"></label>`).join("");
+      lab.innerHTML = `
+        <div class="desmos-canvas-wrap"><canvas id="desmosCanvas" aria-label="Interactive graph adjuster"></canvas></div>
+        <div class="desmos-controls">
+          <div class="desmos-equation" id="desmosEquation">y = a sin(bx + c) + d</div>
+          <label>Graph type
+            <select id="desmosType">
+              <option value="linear">Linear: y = ax + d</option>
+              <option value="quadratic">Quadratic: y = a(x-b)^2 + d</option>
+              <option value="exp">Exponential: y = a e^x + d</option>
+              <option value="log">Logarithm: y = a ln(x-b) + d</option>
+              <option value="sin" selected>Sine: y = a sin(bx+c)+d</option>
+              <option value="cos">Cosine: y = a cos(bx+c)+d</option>
+            </select>
+          </label>
+          ${sliders}
+        </div>
+      `;
+      el.topicGrid.appendChild(lab);
+      ["desmosType", "aSlider", "bSlider", "cSlider", "dSlider"].forEach(id => lab.querySelector(`#${id}`).addEventListener("input", () => drawDesmosAdjuster(lab)));
+      requestAnimationFrame(() => drawDesmosAdjuster(lab));
     }
 
     function drawMini(canvas, type) {
       const { ctx, w, h } = resizeCanvas(canvas);
       clearPretty(ctx, w, h);
       const cleanTypes = ["mappingClean", "lineTestsClean", "surdFamiliesClean", "domainFamiliesClean", "inversePairClean", "expLogClean"];
+      const sketchMiniTypes = ["parentMini", "absoluteRationalMini", "surdMini", "expLogMini", "trigMini", "transformMini", "desmosPolyMini", "desmosExpLogMini", "desmosTrigMini"];
+      if (sketchMiniTypes.includes(type)) return drawSketchMini(ctx, w, h, type);
       if (cleanTypes.includes(type)) {
         return drawCleanTopicMini(ctx, w, h, type);
       }
@@ -3001,6 +3220,31 @@
         plot(ctx, map, x => x, "#2077ff", 3);
         plot(ctx, map, x => x * x / 2 - 1, "#ff6f61", 3);
         plot(ctx, map, x => Math.abs(x) - 1, "#00a8a8", 3);
+      }
+    }
+
+    function drawSketchMini(ctx, w, h, type) {
+      const left = { x: w * 0.07, y: h * 0.18, w: w * 0.38, h: h * 0.62 };
+      const right = { x: w * 0.55, y: h * 0.18, w: w * 0.36, h: h * 0.62 };
+      const smallAxis = box => miniAxis(ctx, box, { x0: box.x + box.w * 0.35, y0: box.y + box.h * 0.68, xMin: -2.3, xMax: 2.3, yMin: -2.1, yMax: 2.5, width: 3 });
+      if (type === "parentMini") {
+        const m1 = smallAxis(left); miniPlot(ctx, m1, x => 0.75, "#07152f", 4); miniPlot(ctx, m1, x => 0.7 * x, "#2077ff", 4); miniText(ctx, "constant / linear", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
+        const m2 = smallAxis(right); miniPlot(ctx, m2, x => 0.55 * x * x - 0.6, "#ff6f61", 4); miniPlot(ctx, m2, x => 0.25 * x * x * x, "#00a8a8", 4); miniText(ctx, "quadratic / cubic", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+      } else if (type === "absoluteRationalMini") {
+        const m1 = smallAxis(left); miniPlot(ctx, m1, x => Math.abs(x), "#ff6f61", 4); miniText(ctx, "absolute", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
+        const m2 = smallAxis(right); miniPlot(ctx, m2, x => Math.abs(x) < 0.08 ? Infinity : 0.9 / x, "#07152f", 4); miniText(ctx, "rational", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+      } else if (type === "surdMini") {
+        const m1 = smallAxis(left); miniPlot(ctx, m1, x => x >= 0 ? Math.sqrt(x) : Infinity, "#2077ff", 4); miniPlot(ctx, m1, x => x >= 0 ? -Math.sqrt(x) : Infinity, "#00a8a8", 4); miniText(ctx, "x >= a", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
+        const m2 = smallAxis(right); miniPlot(ctx, m2, x => x <= 0 ? Math.sqrt(-x) : Infinity, "#7765e3", 4); miniPlot(ctx, m2, x => x <= 0 ? -Math.sqrt(-x) : Infinity, "#f5b642", 4); miniText(ctx, "x <= a", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+      } else if (type === "expLogMini" || type === "desmosExpLogMini") {
+        const m1 = smallAxis(left); miniPlot(ctx, m1, x => Math.exp(x), "#2077ff", 4); miniText(ctx, "e^x", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 15);
+        const m2 = smallAxis(right); miniPlot(ctx, m2, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); miniText(ctx, "ln x", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 15);
+      } else if (type === "trigMini" || type === "desmosTrigMini") {
+        const m1 = smallAxis(left); miniPlot(ctx, m1, x => Math.sin(x), "#2077ff", 4); miniPlot(ctx, m1, x => Math.cos(x), "#ff6f61", 4); miniText(ctx, "sin / cos", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
+        const m2 = smallAxis(right); miniPlot(ctx, m2, x => Math.abs(Math.cos(x)) < 0.08 ? Infinity : Math.tan(x), "#7765e3", 4); miniText(ctx, "tan", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+      } else if (type === "transformMini" || type === "desmosPolyMini") {
+        const m1 = smallAxis(left); miniPlot(ctx, m1, x => x * x / 2 - 0.7, "rgba(16,32,51,0.35)", 3); miniPlot(ctx, m1, x => -0.7 * (x - 0.6) ** 2 + 1.1, "#2077ff", 4); miniText(ctx, "transform", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
+        const m2 = smallAxis(right); miniPlot(ctx, m2, x => 0.7 * x + 0.2, "#ff6f61", 4); miniPlot(ctx, m2, x => 0.45 * (x + 0.6) ** 2 - 0.6, "#00a8a8", 4); miniText(ctx, "sliders", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
       }
     }
 
@@ -3344,6 +3588,7 @@
       if (["inverseAlgebra", "inverseReflect"].includes(type)) return drawInverse(ctx, w, h, type, t);
       if (["expOnly", "logOnly", "expLogPair", "expLog"].includes(type)) return drawExpLog(ctx, w, h, type, t);
       if (["sin", "cos", "tan", "transformSine", "amplitude", "periodShift"].includes(type)) return drawTrigGraphs(ctx, w, h, type, t);
+      if (["constantGraph", "linearGraph", "quadraticRange", "cubicGraph", "absoluteGraph", "rationalGraph", "absoluteRational", "surdRightUp", "surdRightDown", "surdLeftUp", "expPdf", "logPdf", "expLogPdf", "transformLab", "rangeScan", "desmosPoly", "desmosExpLog", "desmosTrig"].includes(type)) return drawSketchingVisual(ctx, w, h, type, t);
       if (["triangleRatios", "reciprocal", "identity", "complementary", "specialTriangles", "valueTable"].includes(type)) return drawTriangle(ctx, w, h, type, t);
       if (["angleRotation", "negativeIdentities", "identityFamily"].includes(type)) return drawUnitCircle(ctx, w, h, type, t);
       drawFamilies(ctx, w, h, "power", t);
@@ -3652,6 +3897,47 @@
       }
     }
 
+    function drawSketchingVisual(ctx, w, h, type, t) {
+      const map = axes(ctx, w, h, { pad: 50 });
+      map.w = w; map.h = h;
+      const dash = (x1, y1, x2, y2, color = "#ff6f61") => { ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.setLineDash([9, 7]); ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke(); ctx.restore(); };
+      const xPix = x => map.x0 + x * map.sx;
+      const yPix = y => map.y0 - y * map.sy;
+      if (type === "constantGraph") { plot(ctx, map, x => 1.2, "#07152f", 5); label(ctx, "y = k", 58, 58, "#0b2d55"); label(ctx, "Range = {k}", 58, 88, "#00a8a8"); }
+      else if (type === "linearGraph") { plot(ctx, map, x => 0.8 * x + 0.5, "#2077ff", 5); plot(ctx, map, x => -0.8 * x + 0.5, "#ff6f61", 4); label(ctx, "a>0 rises, a<0 falls", 58, 58, "#0b2d55"); }
+      else if (type === "quadraticRange") { const k = -1.1; plot(ctx, map, x => 0.45 * (x - 0.5) ** 2 + k, "#2077ff", 5); dash(map.pad, yPix(k), w - map.pad, yPix(k), "#00a8a8"); label(ctx, "minimum k", xPix(0.9), yPix(k) - 10, "#00a8a8"); label(ctx, "Range [k, infinity)", 58, 58, "#0b2d55"); }
+      else if (type === "cubicGraph") { plot(ctx, map, x => 0.22 * x ** 3 - 0.35 * x + 0.2, "#07152f", 5); label(ctx, "Domain = R, Range = R", 58, 58, "#0b2d55"); }
+      else if (type === "absoluteGraph") { plot(ctx, map, x => Math.abs(x - 0.4), "#ff6f61", 5); label(ctx, "V-shape", 58, 58, "#0b2d55"); label(ctx, "range starts at vertex", 58, 86, "#00a8a8"); }
+      else if (type === "rationalGraph") { dash(map.x0, map.pad, map.x0, h - map.pad); dash(map.pad, map.y0, w - map.pad, map.y0); plot(ctx, map, x => Math.abs(x) < 0.12 ? Infinity : 1.1 / x, "#07152f", 5); label(ctx, "x != b/a, y != 0", 58, 58, "#0b2d55"); }
+      else if (type === "absoluteRational") { plot(ctx, map, x => Math.abs(x + 1.7) - 0.6, "#ff6f61", 4); plot(ctx, map, x => Math.abs(x - 1.1) < 0.12 ? Infinity : 0.75 / (x - 1.1), "#2077ff", 4); dash(xPix(1.1), map.pad, xPix(1.1), h - map.pad); label(ctx, "corner vs asymptote", 58, 58, "#0b2d55"); }
+      else if (["surdRightUp", "surdRightDown", "surdLeftUp"].includes(type)) { const a = 0.6; if (type === "surdRightUp") plot(ctx, map, x => x >= a ? Math.sqrt(x - a) : Infinity, "#2077ff", 5); if (type === "surdRightDown") plot(ctx, map, x => x >= a ? -Math.sqrt(x - a) : Infinity, "#00a8a8", 5); if (type === "surdLeftUp") plot(ctx, map, x => x <= a ? Math.sqrt(a - x) : Infinity, "#7765e3", 5); dash(xPix(a), map.pad, xPix(a), h - map.pad, "#f5b642"); label(ctx, type === "surdLeftUp" ? "x <= a" : "x >= a", 58, 58, "#0b2d55"); }
+      else if (type === "expPdf") { plot(ctx, map, x => Math.exp(x / 1.5), "#2077ff", 5); dash(map.pad, map.y0, w - map.pad, map.y0); label(ctx, "Domain R, Range (0, infinity)", 58, 58, "#0b2d55"); }
+      else if (type === "logPdf") { plot(ctx, map, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 5); dash(map.x0, map.pad, map.x0, h - map.pad); label(ctx, "Domain (0, infinity), Range R", 58, 58, "#0b2d55"); }
+      else if (type === "expLogPdf") { plot(ctx, map, x => Math.exp(x / 1.7), "#2077ff", 4); plot(ctx, map, x => -Math.exp(x / 1.7), "#ff6f61", 4); plot(ctx, map, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); plot(ctx, map, x => x < 0 ? Math.log(-x) : Infinity, "#7765e3", 4); label(ctx, "reflections of e^x and ln x", 58, 58, "#0b2d55"); }
+      else if (type === "transformLab") { plot(ctx, map, x => x * x / 2 - 1, "rgba(16,32,51,0.3)", 3); plot(ctx, map, x => -0.8 * (x - 1) ** 2 + 1.2, "#2077ff", 5); label(ctx, "reflect, shift, stretch", 58, 58, "#0b2d55"); }
+      else if (type === "rangeScan") { plot(ctx, map, x => 0.45 * (x + 0.2) ** 2 - 1.3, "#2077ff", 5); ctx.fillStyle = "rgba(0,168,168,0.12)"; ctx.fillRect(map.pad, map.pad, w - map.pad * 2, h * 0.5); label(ctx, "scan bottom to top", 58, 58, "#00a8a8"); }
+      else if (type === "desmosPoly") { plot(ctx, map, x => 0.65 * (x - Math.sin(t)) ** 2 - 1, "#2077ff", 5); plot(ctx, map, x => (0.5 + Math.sin(t) * 0.25) * x + 0.6, "#ff6f61", 4); label(ctx, "try sliders below", 58, 58, "#0b2d55"); }
+      else if (type === "desmosExpLog") { plot(ctx, map, x => Math.exp(x / 1.7) - 0.5, "#2077ff", 5); plot(ctx, map, x => x > 0 ? Math.log(x) + 0.3 : Infinity, "#00a8a8", 5); label(ctx, "growth vs restriction", 58, 58, "#0b2d55"); }
+      else if (type === "desmosTrig") { const a = 1.2 + 0.5 * Math.sin(t); plot(ctx, map, x => a * Math.sin(1.4 * x), "#2077ff", 5); dash(map.pad, map.y0, w - map.pad, map.y0, "#00a8a8"); label(ctx, "amplitude and period", 58, 58, "#0b2d55"); }
+    }
+
+    function drawDesmosAdjuster(lab) {
+      const canvas = lab.querySelector("#desmosCanvas");
+      const type = lab.querySelector("#desmosType").value;
+      const a = Number(lab.querySelector("#aSlider").value) || 0.1;
+      const b = Number(lab.querySelector("#bSlider").value);
+      const c = Number(lab.querySelector("#cSlider").value);
+      const d = Number(lab.querySelector("#dSlider").value);
+      ["a","b","c","d"].forEach(name => lab.querySelector(`#${name}Val`).textContent = Number(lab.querySelector(`#${name}Slider`).value).toFixed(1));
+      const eq = { linear: `y = ${a.toFixed(1)}x + ${d.toFixed(1)}`, quadratic: `y = ${a.toFixed(1)}(x - ${b.toFixed(1)})^2 + ${d.toFixed(1)}`, exp: `y = ${a.toFixed(1)}e^x + ${d.toFixed(1)}`, log: `y = ${a.toFixed(1)}ln(x - ${b.toFixed(1)}) + ${d.toFixed(1)}`, sin: `y = ${a.toFixed(1)}sin(${(b || 1).toFixed(1)}x + ${c.toFixed(1)}) + ${d.toFixed(1)}`, cos: `y = ${a.toFixed(1)}cos(${(b || 1).toFixed(1)}x + ${c.toFixed(1)}) + ${d.toFixed(1)}` }[type];
+      lab.querySelector("#desmosEquation").textContent = eq;
+      const { ctx, w, h } = resizeCanvas(canvas); clearPretty(ctx, w, h); const map = axes(ctx, w, h, { pad: 42 });
+      const fn = { linear: x => a * x + d, quadratic: x => a * (x - b) ** 2 + d, exp: x => a * Math.exp(x) + d, log: x => x > b ? a * Math.log(x - b) + d : Infinity, sin: x => a * Math.sin((b || 1) * x + c) + d, cos: x => a * Math.cos((b || 1) * x + c) + d }[type];
+      if (type === "log") { ctx.save(); ctx.strokeStyle = "rgba(255,111,97,0.65)"; ctx.lineWidth = 3; ctx.setLineDash([8,7]); const ax = map.x0 + b * map.sx; ctx.beginPath(); ctx.moveTo(ax, map.pad); ctx.lineTo(ax, h - map.pad); ctx.stroke(); ctx.restore(); }
+      if (type === "exp") { ctx.save(); ctx.strokeStyle = "rgba(255,111,97,0.65)"; ctx.lineWidth = 3; ctx.setLineDash([8,7]); const ay = map.y0 - d * map.sy; ctx.beginPath(); ctx.moveTo(map.pad, ay); ctx.lineTo(w - map.pad, ay); ctx.stroke(); ctx.restore(); }
+      plot(ctx, map, fn, "#2077ff", 5, 0.025); label(ctx, eq, 54, 58, "#0b2d55");
+    }
+
     function drawTriangle(ctx, w, h, type, t) {
       ctx.save();
       ctx.lineWidth = 5;
@@ -3751,191 +4037,29 @@
     }
 
     function tutorReply(input) {
-      const q = input.toLowerCase();
-      const topic = state.topic;
-      const slide = topic ? currentSlide() : null;
-      const topicId = topic ? topic.id : "";
-      const has = words => words.some(word => q.includes(word));
-
-      if (has(["hello", "hi", "hey", "你好", "hai"])) {
-        return "Hello, I am Ms. F(x), your mathematics learning assistant. You can ask me about functions, graphs, domain, range, inverse functions, exponential and logarithmic graphs, or trigonometry.";
-      }
-      if (has(["what can you do", "help", "assist", "怎么", "可以做什么"])) {
-        return "I can explain the current slide, give examples, check your thinking, and guide you step by step through Functions and Graphs or Trigonometric Functions.";
-      }
-      if (has(["exponential", "e^x", "e power", "指数"])) {
-        return "For y=e^x, the domain is all real numbers and the range is (0, infinity). The curve passes through (0,1), stays above the x-axis, and grows faster as x increases.";
-      }
-      if (has(["log", "logarithm", "logarithmic", "对数"])) {
-        return "A logarithmic graph is the inverse shape of an exponential graph. For y=log base a of x, the domain is x>0 and the vertical asymptote is x=0.";
-      }
-      if (has(["example", "sample", "例子"])) {
-        if (topicId.includes("inverse")) return "Example: if f(x)=5x+3, write y=5x+3, swap x and y, then solve x=5y+3. So the inverse is f inverse of x equals (x-3)/5.";
-        if (topicId.includes("trig")) return "Example: y=2 sin x has amplitude 2. That means the curve reaches 2 and -2 instead of 1 and -1, while the period stays 2 pi.";
-        if (topicId.includes("domain")) return "Example: for y = square root of x minus 4, the inside must be at least zero. So x-4 >= 0, and the domain is x >= 4.";
-        return "Example: a mapping a->1, b->3, c->3 is a function because each input has exactly one output.";
-      }
-      if (has(["mistake", "wrong", "confuse", "confused", "常错", "错误"])) {
-        return "A common mistake is reading the range as every value in the codomain. The range only contains outputs the function actually reaches.";
-      }
-      if (has(["domain", "x-value", "x value", "定义域"])) {
-        return "Domain means all allowed x-values. Check the graph from left to right, or use algebraic restrictions such as denominator not zero, root inside at least zero, and log inside greater than zero.";
-      }
-      if (has(["range", "y-value", "y value", "值域"])) {
-        return "Range means all y-values produced by the function. On a graph, scan from bottom to top and notice endpoints, maximums, minimums and asymptotes.";
-      }
-      if (has(["function", "relation", "vertical line", "函数", "关系"])) {
-        return "A function gives each input exactly one output. On a graph, use the vertical line test: if one vertical line touches the graph more than once, it is not a function.";
-      }
-      if (has(["inverse", "one-to-one", "horizontal line", "反函数"])) {
-        return "An inverse function exists when the original function is one-to-one. Graphically, it passes the horizontal line test. Algebraically, f(a)=f(b) must lead to a=b.";
-      }
-      if (has(["quadratic", "parabola", "x^2", "二次"])) {
-        return "A quadratic graph is a parabola. For y=ax^2+bx+c, the sign of a decides whether it opens upward or downward, and the vertex shows the minimum or maximum point.";
-      }
-      if (has(["cubic", "x^3", "三次"])) {
-        return "A cubic graph usually has an S-like shape. Its end behavior goes down on one side and up on the other when the leading coefficient is positive.";
-      }
-      if (has(["square root", "sqrt", "根号"])) {
-        return "A square root graph starts where the expression inside the root becomes zero. For y=sqrt(x), the graph begins at (0,0), stays in the first quadrant, and has range y >= 0.";
-      }
-      if (has(["reciprocal", "1/x", "asymptote", "渐近线"])) {
-        return "A reciprocal graph such as y=k/x has two branches. It never touches the axes when k is not zero, so x=0 and y=0 act like asymptotes.";
-      }
-      if (has(["amplitude", "period", "midline", "振幅", "周期"])) {
-        return "For y=a sin(bx+c)+d, amplitude is |a| and period is 2pi/|b|. The value d moves the midline to y=d.";
-      }
-      if (has(["sin", "cos", "tan", "trigonometric", "三角"])) {
-        return "Sine and cosine have range [-1,1] and period 2pi. Tangent has period pi and vertical asymptotes at pi/2+k pi.";
-      }
-      if (has(["solve", "find", "calculate", "question", "answer", "求"])) {
-        return "I can help you solve it step by step. First identify the function type, then check restrictions, then connect the algebra to the graph. Send me the exact equation or question and I will guide the next step.";
-      }
-      if (slide) {
-        return `For this page, focus on this idea: ${slide.text} The visual is showing the same rule as a picture, so connect the formula to what moves on the graph.`;
-      }
-      return "Ask me any question from this website's mathematics syllabus. For example, you can ask about domain and range, graph families, inverse functions, exponential and logarithmic functions, or sine, cosine and tangent.";
-    }
-
-    function tutorReply(input) {
-      const raw = input.trim();
-      const q = raw.toLowerCase();
-      const compact = q.replace(/\s+/g, "");
-      const topic = state.topic;
-      const slide = topic ? currentSlide() : null;
-      const topicId = topic ? topic.id : "";
-      const has = words => words.some(word => q.includes(word) || compact.includes(word.replace(/\s+/g, "")));
-      const greets = /\b(hi|hello|hey|good morning|good afternoon|good evening|hai)\b/.test(q)
-        || has(["\u4f60\u597d", "\u55e8", "\u65e9\u5b89", "\u5348\u5b89", "\u665a\u4e0a\u597d"]);
-
-      const friendlyOpeners = [
-        "Sure, let us look at it together.",
-        "Good question. I will guide you step by step.",
-        "Of course. Here is the main idea.",
-        "Yes. Think of it this way."
-      ];
-      const opener = friendlyOpeners[Math.min(raw.length % friendlyOpeners.length, friendlyOpeners.length - 1)];
-
-      if (greets) {
-        return "Hello! I am Ms. F(x), your mathematics learning assistant. You can greet me, ask for an explanation, send a graph question, or type an equation such as y=e^x, y=sqrt(x-4), y=1/x, or y=sin x.";
-      }
-      if (has(["thank", "thanks", "tq", "\u8c22\u8c22", "\u611f\u8c22"])) {
-        return "You are very welcome. Keep asking whenever something feels unclear; mathematics becomes easier when we break it into small steps.";
-      }
-      if (has(["bye", "goodbye", "see you", "\u518d\u89c1", "\u62dc\u62dc"])) {
-        return "Goodbye! Come back anytime when you want to practise functions, graphs, or trigonometry.";
-      }
-      if (has(["sorry", "my bad", "\u5bf9\u4e0d\u8d77"])) {
-        return "No worries at all. Learning is allowed to be messy. Tell me which part you want to try again.";
-      }
-      if (has(["what can you do", "help", "assist", "how can you help", "\u600e\u4e48", "\u5e2e\u6211", "\u53ef\u4ee5\u505a\u4ec0\u4e48"])) {
-        return "I can explain the current slide, simplify hard ideas, give examples, make practice questions, check your answer, and guide you through functions, domain, range, inverse functions, graph families, exponential-logarithmic functions, and trigonometry.";
-      }
-      if (has(["i don't understand", "dont understand", "not understand", "confused", "blur", "\u4e0d\u660e\u767d", "\u770b\u4e0d\u61c2", "\u4e0d\u61c2"])) {
-        if (slide) return `That's okay. The simple version is: ${slide.text} Try to connect each formula to what changes on the graph: left-right movement is x, up-down movement is y.`;
-        return "That's okay. Tell me the exact word, graph, or equation that feels confusing, and I will explain it in a simpler way with an example.";
-      }
-      if (has(["explain simply", "simple", "simplify", "easy way", "\u7b80\u5355", "\u5bb9\u6613"])) {
-        if (slide) return `${opener} In simple words: ${slide.text} The key is to notice what x is allowed to be and what y-values the graph can actually reach.`;
-        return `${opener} For most graph questions, use this order: identify the function type, check restrictions on x, sketch the key shape, then read the range from bottom to top.`;
-      }
-      if (has(["quiz", "test me", "practice", "exercise", "\u7ec3\u4e60", "\u6d4b\u9a8c"])) {
-        return "Try this practice question: What is the domain of y=sqrt(x-5)? Hint: the expression inside the square root must be greater than or equal to zero.";
-      }
-      if (has(["check my answer", "is my answer", "correct", "\u68c0\u67e5", "\u5bf9\u5417"])) {
-        return "Send me your answer together with the original question. I will compare the reasoning, not only the final answer, so you can see where it is correct or where it needs fixing.";
-      }
-      if (has(["current slide", "this slide", "this page", "now learning", "\u8fd9\u9875", "\u73b0\u5728"])) {
-        if (slide) return `This page is about ${slide.title}. Main idea: ${slide.text} Important keywords: ${slide.keys.join(", ")}.`;
-        return "You have not opened a subtopic yet. Start a lesson first, then I can explain the exact slide you are viewing.";
-      }
-      if (has(["step", "method", "how to solve", "solve", "\u6b65\u9aa4", "\u600e\u4e48\u505a", "\u89e3"])) {
-        return "Use this method: 1. Identify the function type. 2. Find restrictions on x. 3. Mark key points or asymptotes. 4. Sketch the parent graph shape. 5. Read the required answer from the graph or formula.";
-      }
-
-      const sqrtMatch = compact.match(/sqrt\(?x([+-]\d+(?:\.\d+)?)\)?/) || compact.match(/\u221ax([+-]\d+(?:\.\d+)?)/);
-      if (sqrtMatch) {
-        const shift = Number(sqrtMatch[1]);
-        const boundary = -shift;
-        return `For this square root function, the inside of the square root must be at least 0. So the domain is x >= ${boundary}. The graph starts at x=${boundary}, and the range is y >= 0 unless the whole graph is shifted up or down.`;
-      }
-      if (has(["sqrt", "square root", "\u221a", "\u6839\u53f7"])) {
-        return "A square root function only accepts x-values that make the inside of the root non-negative. For y=sqrt(x), the domain is x>=0 and the range is y>=0.";
-      }
-      if (has(["e^x", "exp(x)", "e power", "exponential", "\u6307\u6570"])) {
-        return "For y=e^x, the domain is all real numbers and the range is (0, infinity). The curve passes through (0,1), stays above the x-axis, and grows faster as x increases.";
-      }
-      if (has(["log", "ln", "logarithm", "logarithmic", "\u5bf9\u6570"])) {
-        return "For logarithmic functions, the inside must be greater than 0. For y=log_a x, the domain is x>0, the range is all real numbers, and x=0 is a vertical asymptote.";
-      }
-      if (has(["1/x", "reciprocal", "k/x", "asymptote", "\u6e10\u8fd1\u7ebf"])) {
-        return "For y=k/x where k is not 0, x cannot be 0 and y cannot be 0. The graph has two branches with asymptotes x=0 and y=0.";
-      }
-      if (has(["domain", "x-value", "x value", "\u5b9a\u4e49\u57df"])) {
-        return "Domain means all allowed x-values. Check restrictions: denominators cannot be 0, square-root insides must be >=0, and logarithm insides must be >0.";
-      }
-      if (has(["range", "y-value", "y value", "\u503c\u57df"])) {
-        return "Range means all possible y-values. On a graph, scan from bottom to top and notice endpoints, maximums, minimums, and asymptotes.";
-      }
-      if (has(["function", "relation", "vertical line", "\u51fd\u6570", "\u5173\u7cfb"])) {
-        return "A relation is a function when every input has exactly one output. On a graph, use the vertical line test: one vertical line should not touch the graph more than once.";
-      }
-      if (has(["inverse", "one-to-one", "horizontal line", "\u53cd\u51fd\u6570"])) {
-        return "An inverse function exists when the original function is one-to-one. Use the horizontal line test on the graph, or swap x and y in the formula and solve for y.";
-      }
-      if (has(["quadratic", "parabola", "x^2", "\u4e8c\u6b21"])) {
-        return "A quadratic graph is a parabola. For y=ax^2+bx+c, a decides whether it opens up or down. The vertex is the turning point and shows the minimum or maximum.";
-      }
-      if (has(["cubic", "x^3", "\u4e09\u6b21"])) {
-        return "A cubic graph usually has an S-like shape. If the leading coefficient is positive, the graph goes down on the left and up on the right.";
-      }
-      if (has(["absolute", "modulus", "|x|", "\u7edd\u5bf9\u503c"])) {
-        return "An absolute value graph has a V-shape. For y=|x|, the domain is all real numbers and the range is y>=0.";
-      }
-      if (has(["linear", "straight line", "gradient", "slope", "\u76f4\u7ebf", "\u659c\u7387"])) {
-        return "A linear function makes a straight line. In y=mx+c, m is the gradient or slope, and c is the y-intercept.";
-      }
-      if (has(["amplitude", "period", "midline", "\u632f\u5e45", "\u5468\u671f"])) {
-        return "For y=a sin(bx+c)+d or y=a cos(bx+c)+d, amplitude is |a|, period is 2pi/|b|, and the midline is y=d.";
-      }
-      if (has(["sin", "cos", "tan", "trigonometric", "\u4e09\u89d2"])) {
-        return "Sine and cosine have range [-1,1] and period 2pi. Tangent has period pi and vertical asymptotes at pi/2 + k pi.";
-      }
-      if (has(["example", "sample", "\u4f8b\u5b50"])) {
-        if (topicId.includes("inverse")) return "Example: if f(x)=5x+3, write y=5x+3, swap x and y, then solve x=5y+3. So f inverse of x is (x-3)/5.";
-        if (topicId.includes("trig")) return "Example: y=2 sin x has amplitude 2, so it reaches 2 and -2 instead of 1 and -1.";
-        return "Example: for y=sqrt(x-4), x-4 must be at least 0, so the domain is x>=4. The graph starts at (4,0).";
-      }
-      if (has(["mistake", "wrong", "\u5e38\u9519", "\u9519\u8bef"])) {
-        return "A common mistake is mixing up codomain and range. The range only contains y-values the graph actually reaches.";
-      }
-      if (has(["why", "\u4e3a\u4ec0\u4e48"])) {
-        return "The reason usually comes from restrictions. Denominators cannot be zero because division by zero is undefined. Square roots need non-negative insides. Logs need positive insides.";
-      }
-      if (slide) {
-        return `${opener} Since you are on ${slide.title}, connect your question to this idea: ${slide.text} If you send me the exact equation, I can guide the next step more precisely.`;
-      }
-      return "I can help with many questions from this website. Please send the exact equation, graph type, or concept, and I will respond step by step. Good examples are: domain of y=sqrt(x-4), range of y=e^x, inverse of y=2x+1, or period of y=sin x.";
+      const raw = input.trim(); const q = raw.toLowerCase(); const compact = q.replace(/\s+/g, ""); const topic = state.topic; const slide = topic ? currentSlide() : null; const has = words => words.some(word => q.includes(word) || compact.includes(word.replace(/\s+/g, ""))); const opener = "Based on the PDF graph framework, ";
+      if (/\b(hi|hello|hey|hai)\b/.test(q) || has(["你好", "嗨"])) return "Hello! I am Ms. F(x). This version focuses on sketching graphs: constant, linear, quadratic, cubic, absolute, rational, surd, exponential, logarithmic, sine, cosine and tangent graphs.";
+      if (has(["help", "what can you do", "assist", "帮我", "可以做什么"])) return "I can help you identify a graph type, sketch the parent graph, find domain and range from the graph, explain asymptotes, amplitude, period, and guide you through slider-style graph changes.";
+      if (has(["domain", "定义域", "x-value", "x value"])) return opener + "domain means the x-values covered by the graph. Scan from left to right. For rational graphs exclude vertical asymptotes, for surd graphs make the radicand >=0, and for ln graphs the input must be >0.";
+      if (has(["range", "值域", "y-value", "y value"])) return opener + "range means the y-values reached by the graph. Scan from bottom to top. Constant has range {k}, quadratic starts from its vertex, exponential has y>0 before shifts, and tangent has all real y-values.";
+      if (has(["constant", "y=k"])) return "For f(x)=k, the graph is a horizontal line. Domain is R and range is {k}.";
+      if (has(["linear", "straight", "slope", "gradient", "直线"])) return "For f(x)=ax+b with a not equal 0, the graph is a straight line. Domain is R and range is R. a controls slope and b is the y-intercept.";
+      if (has(["quadratic", "parabola", "x^2", "二次"])) return "For f(x)=ax^2+bx+c, sketch a parabola. If a>0 it opens upward and has a minimum; if a<0 it opens downward and has a maximum. Domain is R.";
+      if (has(["cubic", "x^3", "三次"])) return "A cubic graph has an S-like shape. In the PDF framework, its domain is R and range is R.";
+      if (has(["absolute", "modulus", "|x|", "绝对值"])) return "An absolute graph f(x)=|x-a| is V-shaped. The vertex is at x=a. Basic domain is R and range is [0,infinity).";
+      if (has(["rational", "reciprocal", "1/x", "asymptote", "渐近线"])) return "For f(x)=1/(ax-b), the vertical asymptote is x=b/a. Domain excludes b/a, and range excludes 0. Sketch two branches approaching the asymptotes.";
+      if (has(["surd", "sqrt", "square root", "根号", "√"])) return "For surd graphs, make the expression inside the square root non-negative. sqrt(x-a) has domain [a,infinity) and range [0,infinity); -sqrt(x-a) has range (-infinity,0].";
+      if (has(["exponential", "e^x", "e power", "指数"])) return "For y=e^x, domain is R, range is (0,infinity), and the horizontal asymptote is y=0. Reflections like -e^x move the graph below the x-axis.";
+      if (has(["ln", "log", "logarithm", "对数"])) return "For y=ln x, domain is (0,infinity), range is R, and x=0 is a vertical asymptote. ln(-x) is the reflected logarithmic graph on the left side.";
+      if (has(["sin", "sine", "正弦"])) return "For y=sin x, domain is R, range is [-1,1], period is 2pi, and x-intercepts are n pi.";
+      if (has(["cos", "cosine", "余弦"])) return "For y=cos x, domain is R, range is [-1,1], period is 2pi, and the y-intercept is 1.";
+      if (has(["tan", "tangent", "正切"])) return "For y=tan x, range is R, period is pi, and vertical asymptotes occur at x=pi/2+n pi.";
+      if (has(["amplitude", "period", "midline", "振幅", "周期"])) return "For y=a sin(bx+c)+d or y=a cos(bx+c)+d, amplitude is |a|, period is 2pi/|b|, and midline is y=d. For tangent, period is pi/|b|.";
+      if (has(["transform", "shift", "reflect", "stretch", "平移", "反射"])) return "Use the parent graph first. A negative outside reflects in the x-axis, a negative inside reflects in the y-axis, x-h shifts horizontally, and +k shifts vertically.";
+      if (has(["desmos", "slider", "adjust", "滑杆", "调整"])) return "Open the Desmos Graph Adjuster section. Move a, b, c and d: a changes steepness/amplitude/reflection, b often affects horizontal shift or period, c shifts trig graphs, and d moves the graph up or down.";
+      if (has(["practice", "quiz", "test me", "练习"])) return "Practice question: Identify the function type and domain for y=sqrt(x-3). The key is x-3>=0, so the graph starts at x=3.";
+      if (slide) return `This page is about ${slide.title}. ${slide.text} Focus on these PDF-style graph facts: ${slide.keys.join(" ")}`;
+      return "Send me a function or graph feature, for example y=1/(x-2), y=sqrt(5-x), y=e^x, y=ln x, y=sin x, or y=a(x-h)^2+k. I will help identify the graph type, domain and range.";
     }
 
     function selectTeacherVoice() {
@@ -4121,7 +4245,7 @@
       if (state.topic) drawLesson();
     });
 
-    addBot("Hello, I'm Ms. F(x), your friendly mathematics AI teacher. You can greet me, ask a concept question, send an equation, request an example, or ask for practice about functions, graphs, domain, range, inverse functions, logarithms, exponentials, and trigonometry.");
+    addBot("Hello, I'm Ms. F(x). This site now focuses on sketching graphs from the PDF: identify the function type, read domain and range from the graph, then test transformations with the Desmos Graph Adjuster.");
     animate();
   </script>
 </body>

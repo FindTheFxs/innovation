@@ -1505,6 +1505,284 @@
     .desmos-equation { font-family: Georgia, serif; font-size: 1.72rem; color: #0b2d55; background: rgba(216,255,243,0.58); border: 1px solid rgba(0,168,168,0.22); border-radius: 8px; padding: 18px; }
     @media (max-width: 760px) { .desmos-lab-card { grid-template-columns: 1fr; } }
 
+
+    /* Final responsive compatibility layer for desktop, laptop, tablet, and phone. */
+    .app, .hero, #subtopics, .lesson-shell, .game-panel, .ai-panel {
+      max-width: 100%;
+    }
+
+    img, svg, canvas, select, input, button {
+      max-width: 100%;
+    }
+
+    .chapter-title, .topic-body h3, .lesson-title, .desmos-equation, .desmos-controls label, .desmos-controls small {
+      overflow-wrap: anywhere;
+    }
+
+    @media (min-width: 1600px) {
+      .app {
+        width: min(96vw, 1760px);
+      }
+
+      .hero {
+        grid-template-columns: minmax(620px, 1fr) minmax(560px, 760px);
+      }
+
+      .chapter-tabs {
+        max-width: 980px;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .desmos-lab-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .desmos-canvas-wrap,
+      .desmos-canvas-wrap canvas,
+      #desmosCalculator {
+        min-height: 560px;
+        height: 560px;
+      }
+
+      .desmos-controls {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+      }
+
+      .desmos-equation,
+      .desmos-controls > label:first-of-type {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .app {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero {
+        padding-top: clamp(28px, 5vh, 64px);
+      }
+
+      .chapter-tabs {
+        max-width: 100%;
+      }
+
+      .tab-btn {
+        min-height: clamp(150px, 18vh, 190px);
+      }
+
+      .chapter-icons {
+        min-height: 82px;
+      }
+
+      .chapter-mini {
+        min-height: 76px;
+      }
+
+      .section-head {
+        align-items: stretch;
+        gap: 14px;
+      }
+
+      .section-head .ghost-btn {
+        width: fit-content;
+      }
+
+      .ai-panel {
+        width: min(460px, calc(100vw - 28px));
+        right: 14px;
+        bottom: 14px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      body {
+        min-width: 320px;
+      }
+
+      .app {
+        width: min(100% - 18px, 1180px);
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 18vw, 5.8rem);
+        line-height: 0.95;
+      }
+
+      .subtitle {
+        font-size: clamp(0.98rem, 4vw, 1.12rem);
+      }
+
+      .tab-btn {
+        min-height: auto;
+      }
+
+      .chapter-icons {
+        min-height: 78px;
+      }
+
+      .hero-art {
+        min-height: 320px;
+        height: min(68vh, 460px);
+      }
+
+      .topic-visual {
+        height: clamp(150px, 34vw, 210px);
+      }
+
+      .desmos-lab-card {
+        padding: 12px;
+        gap: 14px;
+      }
+
+      .desmos-canvas-wrap,
+      .desmos-canvas-wrap canvas,
+      #desmosCalculator {
+        min-height: 440px;
+        height: 440px;
+      }
+
+      .desmos-controls {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        font-size: 1.18rem;
+      }
+
+      .desmos-controls label {
+        font-size: 1.12rem;
+      }
+
+      .desmos-controls small {
+        font-size: 1rem;
+      }
+
+      .desmos-controls input[type="range"], .desmos-controls select {
+        font-size: 1.05rem;
+        min-height: 44px;
+      }
+
+      .desmos-equation {
+        font-size: clamp(1.1rem, 5vw, 1.35rem);
+        padding: 14px;
+      }
+
+      .lesson-panel, .game-panel, .topic-card, .desmos-lab-card {
+        border-radius: 8px;
+      }
+
+      .ai-panel {
+        inset: auto 8px 8px 8px;
+        width: auto;
+        max-height: calc(100vh - 16px);
+        grid-template-rows: auto minmax(220px, 1fr) auto auto auto;
+      }
+
+      .chat-log {
+        min-height: 240px;
+      }
+
+      .chat-controls {
+        grid-template-columns: 1fr auto;
+      }
+
+      .ai-launcher {
+        right: 10px;
+        bottom: 10px;
+      }
+
+      .ai-launcher-avatar {
+        width: 58px;
+        height: 58px;
+        border-width: 4px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .app {
+        width: min(100% - 12px, 1180px);
+      }
+
+      h1 {
+        font-size: clamp(2.55rem, 19vw, 4.2rem);
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand span:last-child {
+        font-size: 0.82rem;
+      }
+
+      .chapter-tabs {
+        gap: 12px;
+      }
+
+      .chapter-icons {
+        grid-template-columns: 1fr;
+        min-height: 0;
+      }
+
+      .chapter-mini {
+        min-height: 96px;
+      }
+
+      .hero-art {
+        min-height: 280px;
+        height: 360px;
+      }
+
+      .section-head h2 {
+        font-size: clamp(2.3rem, 14vw, 3.4rem);
+      }
+
+      .topic-body {
+        padding: 18px;
+      }
+
+      .topic-body h3 {
+        font-size: clamp(1.24rem, 7vw, 1.75rem);
+      }
+
+      .lesson-stage, .game-grid {
+        gap: 12px;
+      }
+
+      .desmos-canvas-wrap,
+      .desmos-canvas-wrap canvas,
+      #desmosCalculator {
+        min-height: 360px;
+        height: 360px;
+      }
+
+      .desmos-controls {
+        font-size: 1.06rem;
+      }
+
+      .desmos-controls label {
+        font-size: 1.02rem;
+      }
+
+      .desmos-controls small {
+        font-size: 0.92rem;
+      }
+
+      .desmos-equation {
+        font-size: 1.04rem;
+      }
+
+      .chat-controls {
+        grid-template-columns: 1fr;
+      }
+
+      .chat-controls button {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>

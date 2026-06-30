@@ -1492,13 +1492,13 @@
       }
     }
 
-    .desmos-lab-card { grid-column: 1 / -1; background: rgba(255,255,255,0.92); border: 1px solid rgba(16,32,51,0.12); border-radius: 8px; padding: 18px; box-shadow: 0 18px 40px rgba(16,32,51,0.08); display: grid; grid-template-columns: minmax(320px, 1.25fr) minmax(260px, 0.75fr); gap: 18px; }
-    .desmos-canvas-wrap { min-height: 340px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,168,168,0.22); background: linear-gradient(135deg, #f8ffff, #fff8f0); }
-    .desmos-canvas-wrap canvas { width: 100%; height: 340px; display: block; }
-    .desmos-controls { display: grid; gap: 12px; align-content: start; }
-    .desmos-controls label { font-weight: 800; color: #173754; display: grid; gap: 6px; }
-    .desmos-controls input[type="range"], .desmos-controls select { width: 100%; accent-color: var(--teal); }
-    .desmos-equation { font-family: Georgia, serif; font-size: 1.18rem; color: #0b2d55; background: rgba(216,255,243,0.58); border: 1px solid rgba(0,168,168,0.22); border-radius: 8px; padding: 12px; }
+    .desmos-lab-card { grid-column: 1 / -1; background: rgba(255,255,255,0.94); border: 1px solid rgba(16,32,51,0.12); border-radius: 8px; padding: 18px; box-shadow: 0 18px 40px rgba(16,32,51,0.08); display: grid; grid-template-columns: minmax(560px, 1.45fr) minmax(360px, 0.55fr); gap: 18px; min-height: 520px; }
+    .desmos-canvas-wrap { min-height: 500px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(0,168,168,0.22); background: linear-gradient(135deg, #f8ffff, #fff8f0); }
+    .desmos-canvas-wrap canvas { width: 100%; height: 500px; display: block; }
+    .desmos-controls { display: grid; gap: 16px; align-content: start; font-size: 1.08rem; }
+    .desmos-controls label { font-weight: 800; color: #173754; display: grid; gap: 8px; }
+    .desmos-controls input[type="range"], .desmos-controls select { width: 100%; accent-color: var(--teal); font-size: 1rem; min-height: 34px; }
+    .desmos-equation { font-family: Georgia, serif; font-size: 1.35rem; color: #0b2d55; background: rgba(216,255,243,0.58); border: 1px solid rgba(0,168,168,0.22); border-radius: 8px; padding: 14px; }
     @media (max-width: 760px) { .desmos-lab-card { grid-template-columns: 1fr; } }
 
   </style>
@@ -1562,7 +1562,7 @@
           <h2 id="chapterTitle">Sketching Graph Based on Function</h2>
           <p id="chapterIntro">Recognise each function by its graph shape, then read domain and range from the picture.</p>
         </div>
-        <button class="ghost-btn" id="jumpTop">Back to Title</button>
+        <button class="ghost-btn" id="jumpTop">Return</button>
       </div>
       <div class="subtopic-grid" id="topicGrid"></div>
     </section>
@@ -3122,6 +3122,10 @@
       el.chapterIntro.textContent = chapter.intro;
       el.topicGrid.innerHTML = "";
       document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.toggle("active", btn.dataset.chapter === state.chapter));
+      if (state.chapter === "desmos") {
+        renderDesmosAdjuster();
+        return;
+      }
       chapter.topics.forEach((topic, index) => {
         const card = document.createElement("article");
         card.className = "topic-card";
@@ -3132,22 +3136,22 @@
           <div class="topic-body">
             <h3>${index + 1}. ${topic.title}</h3>
             <p>${topic.summary}</p>
-            <button class="primary-btn">${state.chapter === "desmos" ? "Open Adjuster" : "Start Learning"}</button>
+            <button class="primary-btn">Start Learning</button>
           </div>
         `;
         card.querySelector("button").addEventListener("click", () => openTopic(topic));
         el.topicGrid.appendChild(card);
         requestAnimationFrame(() => drawMini(card.querySelector("canvas"), topic.visual));
       });
-      if (state.chapter === "desmos") renderDesmosAdjuster();
     }
 
     function renderDesmosAdjuster() {
       const lab = document.createElement("article");
       lab.className = "desmos-lab-card";
-      const sliders = ["a", "b", "c", "d"].map((name, i) => `<label>${name}: <span id="${name}Val">${i === 0 ? "1.0" : "0.0"}</span><input id="${name}Slider" type="range" min="-4" max="4" step="0.1" value="${i === 0 ? "1" : "0"}"></label>`).join("");
+      const sliderData = [["a", "1", "vertical stretch / amplitude"], ["b", "1", "period or horizontal shift"], ["c", "0", "phase shift"], ["d", "0", "vertical shift"]];
+      const sliders = sliderData.map(([name, value, hint]) => `<label>${name}: <span id="${name}Val">${Number(value).toFixed(1)}</span><small>${hint}</small><input id="${name}Slider" type="range" min="-4" max="4" step="0.1" value="${value}"></label>`).join("");
       lab.innerHTML = `
-        <div class="desmos-canvas-wrap"><canvas id="desmosCanvas" aria-label="Interactive graph adjuster"></canvas></div>
+        <div class="desmos-canvas-wrap"><canvas id="desmosCanvas" aria-label="Interactive Desmos-style graph adjuster"></canvas></div>
         <div class="desmos-controls">
           <div class="desmos-equation" id="desmosEquation">y = a sin(bx + c) + d</div>
           <label>Graph type
@@ -3167,7 +3171,6 @@
       ["desmosType", "aSlider", "bSlider", "cSlider", "dSlider"].forEach(id => lab.querySelector(`#${id}`).addEventListener("input", () => drawDesmosAdjuster(lab)));
       requestAnimationFrame(() => drawDesmosAdjuster(lab));
     }
-
     function drawMini(canvas, type) {
       const { ctx, w, h } = resizeCanvas(canvas);
       clearPretty(ctx, w, h);
@@ -3224,27 +3227,38 @@
     }
 
     function drawSketchMini(ctx, w, h, type) {
-      const left = { x: w * 0.07, y: h * 0.18, w: w * 0.38, h: h * 0.62 };
-      const right = { x: w * 0.55, y: h * 0.18, w: w * 0.36, h: h * 0.62 };
-      const smallAxis = box => miniAxis(ctx, box, { x0: box.x + box.w * 0.35, y0: box.y + box.h * 0.68, xMin: -2.3, xMax: 2.3, yMin: -2.1, yMax: 2.5, width: 3 });
+      const axis = (box, x0 = 0.5, y0 = 0.58) => miniAxis(ctx, box, { x0: box.x + box.w * x0, y0: box.y + box.h * y0, xMin: -2.4, xMax: 2.4, yMin: -2.1, yMax: 2.4, width: 3 });
+      const labelAxes = map => { miniText(ctx, "x", map.right - 3, map.y0 + 13, "#0b2d55", 13); miniText(ctx, "y", map.x0 - 9, map.top + 9, "#0b2d55", 13); miniText(ctx, "0", map.x0 - 9, map.y0 + 15, "#0b2d55", 12); };
+      const box4 = [
+        { x: w * 0.06, y: h * 0.14, w: w * 0.39, h: h * 0.3 },
+        { x: w * 0.55, y: h * 0.14, w: w * 0.39, h: h * 0.3 },
+        { x: w * 0.06, y: h * 0.56, w: w * 0.39, h: h * 0.32 },
+        { x: w * 0.55, y: h * 0.56, w: w * 0.39, h: h * 0.32 }
+      ];
       if (type === "parentMini") {
-        const m1 = smallAxis(left); miniPlot(ctx, m1, x => 0.75, "#07152f", 4); miniPlot(ctx, m1, x => 0.7 * x, "#2077ff", 4); miniText(ctx, "constant / linear", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
-        const m2 = smallAxis(right); miniPlot(ctx, m2, x => 0.55 * x * x - 0.6, "#ff6f61", 4); miniPlot(ctx, m2, x => 0.25 * x * x * x, "#00a8a8", 4); miniText(ctx, "quadratic / cubic", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+        const titles = ["constant", "linear", "quadratic", "cubic"];
+        const fns = [x => 0.8, x => 0.8 * x, x => 0.55 * x * x - 0.9, x => 0.28 * x * x * x];
+        const colors = ["#07152f", "#2077ff", "#ff6f61", "#00a8a8"];
+        box4.forEach((b, i) => { const m = axis(b); miniPlot(ctx, m, fns[i], colors[i], 4, 0.025); labelAxes(m); miniText(ctx, titles[i], b.x + b.w * 0.5, b.y - 2, "#0b2d55", 12); });
       } else if (type === "absoluteRationalMini") {
-        const m1 = smallAxis(left); miniPlot(ctx, m1, x => Math.abs(x), "#ff6f61", 4); miniText(ctx, "absolute", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
-        const m2 = smallAxis(right); miniPlot(ctx, m2, x => Math.abs(x) < 0.08 ? Infinity : 0.9 / x, "#07152f", 4); miniText(ctx, "rational", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+        const m1 = axis({ x: w * 0.06, y: h * 0.17, w: w * 0.39, h: h * 0.56 }); miniPlot(ctx, m1, x => Math.abs(x), "#ff6f61", 5); labelAxes(m1); miniText(ctx, "absolute", m1.left + 38, m1.top - 3, "#0b2d55", 13);
+        const m2 = axis({ x: w * 0.55, y: h * 0.17, w: w * 0.39, h: h * 0.56 }); miniPlot(ctx, m2, x => Math.abs(x) < 0.08 ? Infinity : 0.9 / x, "#07152f", 5); labelAxes(m2); miniText(ctx, "reciprocal", m2.left + 48, m2.top - 3, "#0b2d55", 13);
       } else if (type === "surdMini") {
-        const m1 = smallAxis(left); miniPlot(ctx, m1, x => x >= 0 ? Math.sqrt(x) : Infinity, "#2077ff", 4); miniPlot(ctx, m1, x => x >= 0 ? -Math.sqrt(x) : Infinity, "#00a8a8", 4); miniText(ctx, "x >= a", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
-        const m2 = smallAxis(right); miniPlot(ctx, m2, x => x <= 0 ? Math.sqrt(-x) : Infinity, "#7765e3", 4); miniPlot(ctx, m2, x => x <= 0 ? -Math.sqrt(-x) : Infinity, "#f5b642", 4); miniText(ctx, "x <= a", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+        const m = axis({ x: w * 0.11, y: h * 0.13, w: w * 0.78, h: h * 0.7 });
+        miniPlot(ctx, m, x => x >= 0 ? Math.sqrt(x) : Infinity, "#2077ff", 4); miniPlot(ctx, m, x => x >= 0 ? -Math.sqrt(x) : Infinity, "#00a8a8", 4); miniPlot(ctx, m, x => x <= 0 ? Math.sqrt(-x) : Infinity, "#ff6f61", 4); miniPlot(ctx, m, x => x <= 0 ? -Math.sqrt(-x) : Infinity, "#f5b642", 4); labelAxes(m);
+        miniText(ctx, "sqrt(x)", m.x0 + 35, m.y0 - 45, "#2077ff", 13); miniText(ctx, "-sqrt(x)", m.x0 + 36, m.y0 + 50, "#00a8a8", 13); miniText(ctx, "sqrt(-x)", m.x0 - 55, m.y0 - 42, "#ff6f61", 13);
       } else if (type === "expLogMini" || type === "desmosExpLogMini") {
-        const m1 = smallAxis(left); miniPlot(ctx, m1, x => Math.exp(x), "#2077ff", 4); miniText(ctx, "e^x", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 15);
-        const m2 = smallAxis(right); miniPlot(ctx, m2, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); miniText(ctx, "ln x", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 15);
+        const m1 = axis({ x: w * 0.06, y: h * 0.18, w: w * 0.39, h: h * 0.58 }); miniPlot(ctx, m1, x => Math.exp(x), "#2077ff", 4); labelAxes(m1); miniText(ctx, "e^x", m1.x0 + 38, m1.top + 10, "#2077ff", 14);
+        const m2 = axis({ x: w * 0.55, y: h * 0.18, w: w * 0.39, h: h * 0.58 }); miniPlot(ctx, m2, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); labelAxes(m2); miniText(ctx, "ln x", m2.x0 + 45, m2.top + 10, "#00a8a8", 14);
       } else if (type === "trigMini" || type === "desmosTrigMini") {
-        const m1 = smallAxis(left); miniPlot(ctx, m1, x => Math.sin(x), "#2077ff", 4); miniPlot(ctx, m1, x => Math.cos(x), "#ff6f61", 4); miniText(ctx, "sin / cos", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
-        const m2 = smallAxis(right); miniPlot(ctx, m2, x => Math.abs(Math.cos(x)) < 0.08 ? Infinity : Math.tan(x), "#7765e3", 4); miniText(ctx, "tan", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+        const m1 = axis({ x: w * 0.04, y: h * 0.2, w: w * 0.31, h: h * 0.55 }); miniPlot(ctx, m1, x => Math.sin(x), "#2077ff", 4); labelAxes(m1); miniText(ctx, "sin x", m1.left + 50, m1.top - 3, "#2077ff", 13);
+        const m2 = axis({ x: w * 0.35, y: h * 0.2, w: w * 0.31, h: h * 0.55 }); miniPlot(ctx, m2, x => Math.cos(x), "#ff6f61", 4); labelAxes(m2); miniText(ctx, "cos x", m2.left + 52, m2.top - 3, "#ff6f61", 13);
+        const m3 = axis({ x: w * 0.66, y: h * 0.2, w: w * 0.29, h: h * 0.55 }); miniPlot(ctx, m3, x => Math.abs(Math.cos(x)) < 0.12 ? Infinity : Math.tan(x), "#7765e3", 4); labelAxes(m3); miniText(ctx, "tan x", m3.left + 48, m3.top - 3, "#7765e3", 13);
       } else if (type === "transformMini" || type === "desmosPolyMini") {
-        const m1 = smallAxis(left); miniPlot(ctx, m1, x => x * x / 2 - 0.7, "rgba(16,32,51,0.35)", 3); miniPlot(ctx, m1, x => -0.7 * (x - 0.6) ** 2 + 1.1, "#2077ff", 4); miniText(ctx, "transform", left.x + left.w * 0.5, left.y - 5, "#0b2d55", 13);
-        const m2 = smallAxis(right); miniPlot(ctx, m2, x => 0.7 * x + 0.2, "#ff6f61", 4); miniPlot(ctx, m2, x => 0.45 * (x + 0.6) ** 2 - 0.6, "#00a8a8", 4); miniText(ctx, "sliders", right.x + right.w * 0.5, right.y - 5, "#0b2d55", 13);
+        const m = axis({ x: w * 0.08, y: h * 0.14, w: w * 0.82, h: h * 0.66 });
+        miniPlot(ctx, m, x => 0.55 * (x + 0.8) ** 2 - 0.9, "#2077ff", 4); labelAxes(m);
+        ctx.save(); ctx.fillStyle = "rgba(32,119,255,0.12)"; ctx.fillRect(m.left, m.y0 - 70, m.right - m.left, 70); ctx.strokeStyle = "#00a8a8"; ctx.lineWidth = 3; ctx.setLineDash([7, 5]); ctx.beginPath(); ctx.moveTo(m.left + 5, m.y0 - 70); ctx.lineTo(m.right - 5, m.y0 - 70); ctx.stroke(); ctx.setLineDash([]); ctx.restore();
+        miniText(ctx, "domain: x coverage", m.left + 78, m.top + 12, "#2077ff", 13); miniText(ctx, "range: y coverage", m.left + 82, m.top + 34, "#00a8a8", 13);
       }
     }
 
@@ -3929,15 +3943,29 @@
       const c = Number(lab.querySelector("#cSlider").value);
       const d = Number(lab.querySelector("#dSlider").value);
       ["a","b","c","d"].forEach(name => lab.querySelector(`#${name}Val`).textContent = Number(lab.querySelector(`#${name}Slider`).value).toFixed(1));
-      const eq = { linear: `y = ${a.toFixed(1)}x + ${d.toFixed(1)}`, quadratic: `y = ${a.toFixed(1)}(x - ${b.toFixed(1)})^2 + ${d.toFixed(1)}`, exp: `y = ${a.toFixed(1)}e^x + ${d.toFixed(1)}`, log: `y = ${a.toFixed(1)}ln(x - ${b.toFixed(1)}) + ${d.toFixed(1)}`, sin: `y = ${a.toFixed(1)}sin(${(b || 1).toFixed(1)}x + ${c.toFixed(1)}) + ${d.toFixed(1)}`, cos: `y = ${a.toFixed(1)}cos(${(b || 1).toFixed(1)}x + ${c.toFixed(1)}) + ${d.toFixed(1)}` }[type];
+      const safeB = Math.abs(b) < 0.1 ? 1 : b;
+      const eq = { linear: `y = ${a.toFixed(1)}x + ${d.toFixed(1)}`, quadratic: `y = ${a.toFixed(1)}(x - ${b.toFixed(1)})^2 + ${d.toFixed(1)}`, exp: `y = ${a.toFixed(1)}e^x + ${d.toFixed(1)}`, log: `y = ${a.toFixed(1)}ln(x - ${b.toFixed(1)}) + ${d.toFixed(1)}`, sin: `y = ${a.toFixed(1)}sin(${safeB.toFixed(1)}x + ${c.toFixed(1)}) + ${d.toFixed(1)}`, cos: `y = ${a.toFixed(1)}cos(${safeB.toFixed(1)}x + ${c.toFixed(1)}) + ${d.toFixed(1)}` }[type];
       lab.querySelector("#desmosEquation").textContent = eq;
-      const { ctx, w, h } = resizeCanvas(canvas); clearPretty(ctx, w, h); const map = axes(ctx, w, h, { pad: 42 });
-      const fn = { linear: x => a * x + d, quadratic: x => a * (x - b) ** 2 + d, exp: x => a * Math.exp(x) + d, log: x => x > b ? a * Math.log(x - b) + d : Infinity, sin: x => a * Math.sin((b || 1) * x + c) + d, cos: x => a * Math.cos((b || 1) * x + c) + d }[type];
-      if (type === "log") { ctx.save(); ctx.strokeStyle = "rgba(255,111,97,0.65)"; ctx.lineWidth = 3; ctx.setLineDash([8,7]); const ax = map.x0 + b * map.sx; ctx.beginPath(); ctx.moveTo(ax, map.pad); ctx.lineTo(ax, h - map.pad); ctx.stroke(); ctx.restore(); }
-      if (type === "exp") { ctx.save(); ctx.strokeStyle = "rgba(255,111,97,0.65)"; ctx.lineWidth = 3; ctx.setLineDash([8,7]); const ay = map.y0 - d * map.sy; ctx.beginPath(); ctx.moveTo(map.pad, ay); ctx.lineTo(w - map.pad, ay); ctx.stroke(); ctx.restore(); }
-      plot(ctx, map, fn, "#2077ff", 5, 0.025); label(ctx, eq, 54, 58, "#0b2d55");
+      const { ctx, w, h } = resizeCanvas(canvas);
+      ctx.clearRect(0, 0, w, h);
+      const pad = 54, xMin = -8, xMax = 8, yMin = -5, yMax = 5;
+      const sx = (w - pad * 2) / (xMax - xMin), sy = (h - pad * 2) / (yMax - yMin);
+      const px = x => pad + (x - xMin) * sx, py = y => h - pad - (y - yMin) * sy;
+      const x0 = px(0), y0 = py(0);
+      const fn = { linear: x => a * x + d, quadratic: x => a * (x - b) ** 2 + d, exp: x => a * Math.exp(x) + d, log: x => x > b ? a * Math.log(x - b) + d : Infinity, sin: x => a * Math.sin(safeB * x + c) + d, cos: x => a * Math.cos(safeB * x + c) + d }[type];
+      const grad = ctx.createLinearGradient(0, 0, w, h); grad.addColorStop(0, "#fff9db"); grad.addColorStop(0.55, "#effff9"); grad.addColorStop(1, "#eef5ff"); ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
+      ctx.strokeStyle = "rgba(16,32,51,0.12)"; ctx.lineWidth = 1; ctx.fillStyle = "rgba(16,32,51,0.62)"; ctx.font = "13px Arial"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+      for (let x = Math.ceil(xMin); x <= xMax; x++) { const X = px(x); ctx.beginPath(); ctx.moveTo(X, pad); ctx.lineTo(X, h - pad); ctx.stroke(); if (x !== 0) { ctx.fillText(String(x), X, y0 + 18); ctx.beginPath(); ctx.moveTo(X, y0 - 5); ctx.lineTo(X, y0 + 5); ctx.stroke(); } }
+      ctx.textAlign = "right";
+      for (let y = Math.ceil(yMin); y <= yMax; y++) { const Y = py(y); ctx.beginPath(); ctx.moveTo(pad, Y); ctx.lineTo(w - pad, Y); ctx.stroke(); if (y !== 0) { ctx.fillText(String(y), x0 - 10, Y); ctx.beginPath(); ctx.moveTo(x0 - 5, Y); ctx.lineTo(x0 + 5, Y); ctx.stroke(); } }
+      ctx.strokeStyle = "#102033"; ctx.fillStyle = "#102033"; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(pad, y0); ctx.lineTo(w - pad + 12, y0); ctx.stroke(); drawMiniArrowHead(ctx, w - pad + 12, y0, 0, "#102033"); ctx.beginPath(); ctx.moveTo(x0, h - pad); ctx.lineTo(x0, pad - 12); ctx.stroke(); drawMiniArrowHead(ctx, x0, pad - 12, -Math.PI / 2, "#102033");
+      ctx.font = "bold 18px Arial"; ctx.textAlign = "left"; ctx.fillText("x", w - pad + 22, y0 + 18); ctx.fillText("y", x0 + 10, pad - 20); ctx.fillText("0", x0 - 22, y0 + 22);
+      if (type === "log") { ctx.save(); ctx.strokeStyle = "rgba(255,111,97,0.75)"; ctx.lineWidth = 3; ctx.setLineDash([8,7]); ctx.beginPath(); ctx.moveTo(px(b), pad); ctx.lineTo(px(b), h - pad); ctx.stroke(); ctx.restore(); }
+      if (type === "exp") { ctx.save(); ctx.strokeStyle = "rgba(255,111,97,0.75)"; ctx.lineWidth = 3; ctx.setLineDash([8,7]); ctx.beginPath(); ctx.moveTo(pad, py(d)); ctx.lineTo(w - pad, py(d)); ctx.stroke(); ctx.restore(); }
+      ctx.save(); ctx.strokeStyle = "#2077ff"; ctx.lineWidth = 5; ctx.lineCap = "round"; ctx.lineJoin = "round"; ctx.beginPath(); let started = false;
+      for (let x = xMin; x <= xMax; x += 0.025) { const y = fn(x); if (!Number.isFinite(y) || y < yMin - 0.5 || y > yMax + 0.5) { started = false; continue; } const X = px(x), Y = py(y); if (!started) { ctx.moveTo(X, Y); started = true; } else ctx.lineTo(X, Y); }
+      ctx.stroke(); ctx.restore(); ctx.fillStyle = "#0b2d55"; ctx.font = "bold 18px Georgia"; ctx.textAlign = "left"; ctx.fillText(eq, pad + 10, pad - 20);
     }
-
     function drawTriangle(ctx, w, h, type, t) {
       ctx.save();
       ctx.lineWidth = 5;

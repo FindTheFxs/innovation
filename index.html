@@ -62,7 +62,7 @@
     }
 
     body::after {
-      content: "f(x)   y=sin x   Df   Rf   y=x   ln x   e^x   x^2   tan x   π   Σ";
+      content: "f(x)   y=sin x   Df   Rf   y=x   ln x   e^{x}   x^{2}   tan x   π   Σ";
       position: fixed;
       top: 18%;
       left: -4%;
@@ -849,7 +849,7 @@
     }
 
     .ai-panel::before {
-      content: "y=e^x   f(x)   sin x   log_a x   x^2";
+      content: "y=e^{x}   f(x)   sin x   log_a x   x^{2}";
       position: absolute;
       inset: 102px 0 auto;
       height: 64px;
@@ -1815,7 +1815,7 @@
             <span class="chapter-title">Sketching Graph Based on Function</span>
             <span class="chapter-icons" aria-hidden="true">
               <span class="chapter-mini"><svg viewBox="0 0 150 86"><path class="mini-axis" d="M18 64H134M74 74V12" /><path class="mini-mark mini-coral" d="M32 26L74 64L116 26" /><circle cx="74" cy="64" r="3.2" class="mini-fill" /><text x="88" y="33">y=|x|</text><text x="127" y="78">x</text><text x="80" y="18">y</text><text x="63" y="78">0</text></svg></span>
-              <span class="chapter-mini"><svg viewBox="0 0 150 86"><path class="mini-axis" d="M18 64H134M52 74V12" /><path class="mini-mark mini-blue" d="M24 61C42 61 57 58 72 50C89 41 102 25 116 12" /><path class="mini-mark mini-coral mini-dash" d="M22 64H130" /><text x="90" y="25">y=e^x</text><text x="127" y="78">x</text><text x="58" y="18">y</text><text x="41" y="78">0</text></svg></span>
+              <span class="chapter-mini"><svg viewBox="0 0 150 86"><path class="mini-axis" d="M18 64H134M52 74V12" /><path class="mini-mark mini-blue" d="M24 61C42 61 57 58 72 50C89 41 102 25 116 12" /><path class="mini-mark mini-coral mini-dash" d="M22 64H130" /><text x="90" y="25">y=e^{x}</text><text x="127" y="78">x</text><text x="58" y="18">y</text><text x="41" y="78">0</text></svg></span>
             </span>
           </button>
           <button class="tab-btn" data-chapter="desmos" aria-label="Open Graph Adjuster">
@@ -1998,7 +1998,7 @@
                               },
                               {
                                     "title": "Quadratic Function",
-                                    "text": "A quadratic function f(x)=ax^2+bx+c forms a parabola. The vertex gives the minimum when a>0 and maximum when a<0.",
+                                    "text": "A quadratic function f(x)=ax^{2}+bx+c forms a parabola. The vertex gives the minimum when a>0 and maximum when a<0.",
                                     "keys": [
                                           "Domain: R.",
                                           "If a>0, range is [k, infinity).",
@@ -2014,7 +2014,7 @@
                               },
                               {
                                     "title": "Cubic Function",
-                                    "text": "A cubic function f(x)=ax^3+bx^2+cx+d, a not equal 0, has an S-like graph and takes all real x and y values.",
+                                    "text": "A cubic function f(x)=ax^{3}+bx^{2}+cx+d, a not equal 0, has an S-like graph and takes all real x and y values.",
                                     "keys": [
                                           "Domain: R.",
                                           "Range: R.",
@@ -2233,20 +2233,20 @@
                   {
                         "id": "exponential-log-graphs",
                         "title": "Exponential and Logarithmic Graphs",
-                        "summary": "Study e^x and ln x as parent graphs with different domains, ranges and asymptotes.",
+                        "summary": "Study e^{x} and ln x as parent graphs with different domains, ranges and asymptotes.",
                         "color": "linear-gradient(135deg, #e2fff2, #f1f7ff 52%, #fff6df)",
                         "visual": "expLogMini",
                         "slides": [
                               {
                                     "title": "Exponential Function",
-                                    "text": "The exponential parent graph y=e^x is defined for every real x and always stays above the x-axis.",
+                                    "text": "The exponential parent graph y=e^{x} is defined for every real x and always stays above the x-axis.",
                                     "keys": [
                                           "Domain: R.",
                                           "Range: (0, infinity).",
                                           "Horizontal asymptote: y=0."
                                     ],
                                     "chips": [
-                                          "y=e^x",
+                                          "y=e^{x}",
                                           "D=R",
                                           "R=(0,infinity)"
                                     ],
@@ -2271,15 +2271,15 @@
                               },
                               {
                                     "title": "Reflections in the PDF",
-                                    "text": "The PDF also shows reflected forms such as e^-x, -e^x, ln(-x), and -ln x. Reflection changes the position and range direction.",
+                                    "text": "The PDF also shows reflected forms such as e^{-x}, -e^{x}, ln(-x), and -ln x. Reflection changes the position and range direction.",
                                     "keys": [
                                           "Negative outside reflects in the x-axis.",
                                           "Negative inside reflects in the y-axis.",
                                           "Asymptotes help identify the graph."
                                     ],
                                     "chips": [
-                                          "e^-x",
-                                          "-e^x",
+                                          "e^{-x}",
+                                          "-e^{x}",
                                           "ln(-x)",
                                           "-ln x"
                                     ],
@@ -2289,7 +2289,7 @@
                         ],
                         "questions": [
                               {
-                                    "q": "The range of y=e^x is...",
+                                    "q": "The range of y=e^{x} is...",
                                     "a": "(0, infinity)",
                                     "choices": [
                                           "R",
@@ -2511,7 +2511,7 @@
                         "slides": [
                               {
                                     "title": "Polynomial Slider Practice",
-                                    "text": "Use the graph adjuster below to compare y=ax+b and y=a(x-b)^2+c. Notice slope, reflection and vertex movement.",
+                                    "text": "Use the graph adjuster below to compare y=ax+b and y=a(x-b)^{2}+c. Notice slope, reflection and vertex movement.",
                                     "keys": [
                                           "a changes steepness and reflection.",
                                           "b moves the graph horizontally.",
@@ -2536,7 +2536,7 @@
                                     ]
                               },
                               {
-                                    "q": "In y=a(x-b)^2+c, c shifts the graph...",
+                                    "q": "In y=a(x-b)^{2}+c, c shifts the graph...",
                                     "a": "Up or down",
                                     "choices": [
                                           "Left only",
@@ -2548,7 +2548,7 @@
                   {
                         "id": "desmos-exp-log",
                         "title": "Try Exponential and Logarithmic Changes",
-                        "summary": "Compare growth, reflection, shift and asymptotes using e^x and ln x families.",
+                        "summary": "Compare growth, reflection, shift and asymptotes using e^{x} and ln x families.",
                         "color": "linear-gradient(135deg, #e0fff4, #edf2ff 52%, #fff5df)",
                         "visual": "desmosExpLogMini",
                         "slides": [
@@ -2561,7 +2561,7 @@
                                           "Asymptotes guide the sketch."
                                     ],
                                     "chips": [
-                                          "e^x",
+                                          "e^{x}",
                                           "ln x",
                                           "asymptote"
                                     ],
@@ -2571,7 +2571,7 @@
                         ],
                         "questions": [
                               {
-                                    "q": "The basic y=e^x graph has asymptote...",
+                                    "q": "The basic y=e^{x} graph has asymptote...",
                                     "a": "y=0",
                                     "choices": [
                                           "x=0",
@@ -2814,11 +2814,11 @@
       { formula: "y = c", formulaHtml: "y = c", name: "Constant Function", kind: "constant" },
       { formula: "y = mx + c (m != 0)", formulaHtml: "y = mx + c <span class=\"condition\">(m &ne; 0)</span>", name: "Linear Function", kind: "linear" },
       { formula: "y = |x|", formulaHtml: "y = |x|", name: "Absolute Value Function", kind: "absolute" },
-      { formula: "y = ax^2 + bx + c (a != 0)", formulaHtml: "y = ax<sup>2</sup> + bx + c <span class=\"condition\">(a &ne; 0)</span>", name: "Quadratic Function", kind: "quadratic" },
-      { formula: "y = ax^3 + bx^2 + cx + d (a != 0)", formulaHtml: "y = ax<sup>3</sup> + bx<sup>2</sup> + cx + d <span class=\"condition\">(a &ne; 0)</span>", name: "Cubic Function", kind: "cubic" },
+      { formula: "y = ax^{2} + bx + c (a != 0)", formulaHtml: "y = ax<sup>2</sup> + bx + c <span class=\"condition\">(a &ne; 0)</span>", name: "Quadratic Function", kind: "quadratic" },
+      { formula: "y = ax^{3} + bx^{2} + cx + d (a != 0)", formulaHtml: "y = ax<sup>3</sup> + bx<sup>2</sup> + cx + d <span class=\"condition\">(a &ne; 0)</span>", name: "Cubic Function", kind: "cubic" },
       { formula: "y = sqrt(x)", formulaHtml: "y = &radic;x", name: "Square Root Function", kind: "sqrt" },
       { formula: "y = cuberoot(x)", formulaHtml: "y = &#8731;x", name: "Cube Root Function", kind: "cuberoot" },
-      { formula: "y = e^x", formulaHtml: "y = e<sup>x</sup>", name: "Exponential Function", kind: "exp" },
+      { formula: "y = e^{x}", formulaHtml: "y = e<sup>x</sup>", name: "Exponential Function", kind: "exp" },
       { formula: "y = log_a x (a > 0, a != 1)", formulaHtml: "y = log<sub>a</sub> x <span class=\"condition\">(a &gt; 0, a &ne; 1)</span>", name: "Logarithmic Function", kind: "log" },
       { formula: "y = k/x (k != 0)", formulaHtml: "y = <span class=\"math-frac\"><span class=\"top\">k</span><span class=\"bottom\">x</span></span> <span class=\"condition\">(k &ne; 0)</span>", name: "Reciprocal Function", kind: "reciprocal" },
       { formula: "y = sin x", formulaHtml: "y = sin x", name: "Sine Function", kind: "sin" },
@@ -3468,13 +3468,13 @@
             <select id="desmosType">
               <option value="" selected disabled hidden>Select function graph</option>
               <option value="linear">Linear: y = ax + b</option>
-              <option value="quadratic">Quadratic: y = a(x-b)^2 + c</option>
-              <option value="cubic">Cubic: y = a(x-b)^3 + c</option>
-              <option value="exp">Exponential: y = a e^x + b</option>
+              <option value="quadratic">Quadratic: y = a(x-b)^{2} + c</option>
+              <option value="cubic">Cubic: y = a(x-b)^{3} + c</option>
+              <option value="exp">Exponential: y = a e^{x} + b</option>
               <option value="log">Logarithm: y = a ln(x-b) + c</option>
               <option value="sqrt">Square root: y = a sqrt(x-b) + c</option>
               <option value="absLinear">Absolute linear: y = a|x-b| + c</option>
-              <option value="absQuadratic">Absolute quadratic: y = |a(x-b)^2 + c| + d</option>
+              <option value="absQuadratic">Absolute quadratic: y = |a(x-b)^{2} + c| + d</option>
               <option value="sin">Sine: y = a sin(bx+c)+d</option>
               <option value="cos">Cosine: y = a cos(bx+c)+d</option>
               <option value="tan">Tangent: y = a tan(bx+c)+d</option>
@@ -3566,7 +3566,7 @@
         miniPlot(ctx, m, x => x >= 0 ? Math.sqrt(x) : Infinity, "#2077ff", 4); miniPlot(ctx, m, x => x >= 0 ? -Math.sqrt(x) : Infinity, "#00a8a8", 4); miniPlot(ctx, m, x => x <= 0 ? Math.sqrt(-x) : Infinity, "#ff6f61", 4); miniPlot(ctx, m, x => x <= 0 ? -Math.sqrt(-x) : Infinity, "#f5b642", 4); labelAxes(m);
         miniText(ctx, "sqrt(x)", m.x0 + 35, m.y0 - 45, "#2077ff", 13); miniText(ctx, "-sqrt(x)", m.x0 + 36, m.y0 + 50, "#00a8a8", 13); miniText(ctx, "sqrt(-x)", m.x0 - 55, m.y0 - 42, "#ff6f61", 13);
       } else if (type === "expLogMini" || type === "desmosExpLogMini") {
-        const m1 = axis({ x: w * 0.06, y: h * 0.18, w: w * 0.39, h: h * 0.58 }); miniPlot(ctx, m1, x => Math.exp(x), "#2077ff", 4); labelAxes(m1); miniText(ctx, "e^x", m1.x0 + 38, m1.top + 10, "#2077ff", 14);
+        const m1 = axis({ x: w * 0.06, y: h * 0.18, w: w * 0.39, h: h * 0.58 }); miniPlot(ctx, m1, x => Math.exp(x), "#2077ff", 4); labelAxes(m1); miniText(ctx, "e^{x}", m1.x0 + 38, m1.top + 10, "#2077ff", 14);
         const m2 = axis({ x: w * 0.55, y: h * 0.18, w: w * 0.39, h: h * 0.58 }); miniPlot(ctx, m2, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); labelAxes(m2); miniText(ctx, "ln x", m2.x0 + 45, m2.top + 10, "#00a8a8", 14);
       } else if (type === "trigMini" || type === "desmosTrigMini") {
         const m1 = axis({ x: w * 0.04, y: h * 0.2, w: w * 0.31, h: h * 0.55 }); miniPlot(ctx, m1, x => Math.sin(x), "#2077ff", 4); labelAxes(m1); miniText(ctx, "sin x", m1.left + 50, m1.top - 3, "#2077ff", 13);
@@ -3745,7 +3745,7 @@
       ctx.restore();
       miniText(ctx, "y", leftMap.x0 - 10, leftMap.top + 8, "#0b2d55", 16);
       miniText(ctx, "x", leftMap.right - 4, leftMap.y0 + 14, "#0b2d55", 16);
-      miniText(ctx, "y = e^x", leftMap.right - 10, leftMap.top + 38, "#20324f", 16, "right");
+      miniText(ctx, "y = e^{x}", leftMap.right - 10, leftMap.top + 38, "#20324f", 16, "right");
       const rightMap = miniAxis(ctx, { x: w * 0.57, y: h * 0.28, w: w * 0.35, h: h * 0.56 }, { x0: w * 0.72, y0: h * 0.76, xMin: -2.2, xMax: 2.2, yMin: -0.5, yMax: 4, width: 3 });
       miniPlot(ctx, rightMap, x => x * x, "#07152f", 4, 0.025);
       ctx.save();
@@ -3760,7 +3760,7 @@
       ctx.restore();
       miniText(ctx, "y", rightMap.x0 - 10, rightMap.top + 8, "#0b2d55", 16);
       miniText(ctx, "x", rightMap.right - 4, rightMap.y0 + 14, "#0b2d55", 16);
-      miniText(ctx, "y = x^2", rightMap.right - 8, rightMap.top + 42, "#20324f", 16, "right");
+      miniText(ctx, "y = x^{2}", rightMap.right - 8, rightMap.top + 42, "#20324f", 16, "right");
     }
     function drawCleanSurdFamiliesMini(ctx, w, h) {
       miniText(ctx, "3. Basic Graph Families", 28, 22, "#0b2d55", 16, "left");
@@ -3851,7 +3851,7 @@
       ctx.stroke();
       ctx.restore();
       miniText(ctx, "Exponential Function", w * 0.25, 56, "#0b2d55", 14);
-      miniText(ctx, "y = e^x", w * 0.25, 84, "#0b2d55", 22);
+      miniText(ctx, "y = e^{x}", w * 0.25, 84, "#0b2d55", 22);
       const leftMap = miniAxis(ctx, { x: w * 0.07, y: h * 0.32, w: w * 0.35, h: h * 0.5 }, { x0: w * 0.18, y0: h * 0.76, xMin: -1.9, xMax: 1.55, yMin: -0.4, yMax: 5.2, width: 3 });
       miniPlot(ctx, leftMap, x => Math.exp(x), "#07152f", 4, 0.02);
       miniText(ctx, "y", leftMap.x0 - 10, leftMap.top + 8, "#0b2d55", 14);
@@ -3994,7 +3994,7 @@
         label(ctx, "Let f(a) = f(b)", 60, 110);
         label(ctx, "For 7x + 9: 7a + 9 = 7b + 9", 60, 155);
         label(ctx, "Therefore a = b, so it is one-to-one.", 60, 200, "#00a8a8");
-        label(ctx, "For 3 - 4x^2: a = +/- b", 60, 260, "#ff6f61");
+        label(ctx, "For 3 - 4x^{2}: a = +/- b", 60, 260, "#ff6f61");
         label(ctx, "Two inputs can share one output.", 60, 305);
       }
     }
@@ -4091,8 +4091,8 @@
         plot(ctx, map, x => 0.08 * x * x * x, "#00a8a8", 4);
         plot(ctx, map, x => phase * 2 - 1.4, "#f5b642", 4);
         label(ctx, "x", 44, 52, "#2077ff");
-        label(ctx, "x^2", 76, 52, "#ff6f61");
-        label(ctx, "x^3", 124, 52, "#00a8a8");
+        label(ctx, "x^{2}", 76, 52, "#ff6f61");
+        label(ctx, "x^{3}", 124, 52, "#00a8a8");
         label(ctx, "k", 174, 52, "#f5b642");
       }
     }
@@ -4175,7 +4175,7 @@
         plot(ctx, map, x => Math.exp(x / 1.8) - 0.2, "#2077ff", 5);
         plot(ctx, map, x => x > 0 ? Math.log(x) * 1.8 + 0.2 : Infinity, "#00a8a8", 5);
         plot(ctx, map, x => x, "rgba(16,32,51,0.45)", 2);
-        label(ctx, "e^x", 54, 58, "#2077ff");
+        label(ctx, "e^{x}", 54, 58, "#2077ff");
         label(ctx, "ln x", 106, 58, "#00a8a8");
         label(ctx, "inverse pair", 158, 58, "#173754");
       }
@@ -4245,7 +4245,7 @@
       else if (["surdRightUp", "surdRightDown", "surdLeftUp"].includes(type)) { const a = 0.6; if (type === "surdRightUp") plot(ctx, map, x => x >= a ? Math.sqrt(x - a) : Infinity, "#2077ff", 5); if (type === "surdRightDown") plot(ctx, map, x => x >= a ? -Math.sqrt(x - a) : Infinity, "#00a8a8", 5); if (type === "surdLeftUp") plot(ctx, map, x => x <= a ? Math.sqrt(a - x) : Infinity, "#7765e3", 5); dash(xPix(a), map.pad, xPix(a), h - map.pad, "#f5b642"); label(ctx, type === "surdLeftUp" ? "x <= a" : "x >= a", 58, 58, "#0b2d55"); }
       else if (type === "expPdf") { plot(ctx, map, x => Math.exp(x / 1.5), "#2077ff", 5); dash(map.pad, map.y0, w - map.pad, map.y0); label(ctx, "Domain R, Range (0, infinity)", 58, 58, "#0b2d55"); }
       else if (type === "logPdf") { plot(ctx, map, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 5); dash(map.x0, map.pad, map.x0, h - map.pad); label(ctx, "Domain (0, infinity), Range R", 58, 58, "#0b2d55"); }
-      else if (type === "expLogPdf") { plot(ctx, map, x => Math.exp(x / 1.7), "#2077ff", 4); plot(ctx, map, x => -Math.exp(x / 1.7), "#ff6f61", 4); plot(ctx, map, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); plot(ctx, map, x => x < 0 ? Math.log(-x) : Infinity, "#7765e3", 4); label(ctx, "reflections of e^x and ln x", 58, 58, "#0b2d55"); }
+      else if (type === "expLogPdf") { plot(ctx, map, x => Math.exp(x / 1.7), "#2077ff", 4); plot(ctx, map, x => -Math.exp(x / 1.7), "#ff6f61", 4); plot(ctx, map, x => x > 0 ? Math.log(x) : Infinity, "#00a8a8", 4); plot(ctx, map, x => x < 0 ? Math.log(-x) : Infinity, "#7765e3", 4); label(ctx, "reflections of e^{x} and ln x", 58, 58, "#0b2d55"); }
       else if (type === "transformLab") { plot(ctx, map, x => x * x / 2 - 1, "rgba(16,32,51,0.3)", 3); plot(ctx, map, x => -0.8 * (x - 1) ** 2 + 1.2, "#2077ff", 5); label(ctx, "reflect, shift, stretch", 58, 58, "#0b2d55"); }
       else if (type === "rangeScan") { plot(ctx, map, x => 0.45 * (x + 0.2) ** 2 - 1.3, "#2077ff", 5); ctx.fillStyle = "rgba(0,168,168,0.12)"; ctx.fillRect(map.pad, map.pad, w - map.pad * 2, h * 0.5); label(ctx, "scan bottom to top", 58, 58, "#00a8a8"); }
       else if (type === "desmosPoly") { plot(ctx, map, x => 0.65 * (x - Math.sin(t)) ** 2 - 1, "#2077ff", 5); plot(ctx, map, x => (0.5 + Math.sin(t) * 0.25) * x + 0.6, "#ff6f61", 4); label(ctx, "try sliders below", 58, 58, "#0b2d55"); }
@@ -4294,13 +4294,13 @@
       const A = a.toFixed(2), B = b.toFixed(2), C = c.toFixed(2), D = d.toFixed(2);
       const latex = {
         linear: "y=" + A + "x+" + B,
-        quadratic: "y=" + A + "\\left(x-" + B + "\\right)^2+" + C,
-        cubic: "y=" + A + "\\left(x-" + B + "\\right)^3+" + C,
-        exp: "y=" + A + "e^x+" + B,
+        quadratic: "y=" + A + "\\left(x-" + B + "\\right)^{2}+" + C,
+        cubic: "y=" + A + "\\left(x-" + B + "\\right)^{3}+" + C,
+        exp: "y=" + A + "e^{x}+" + B,
         log: "y=" + A + "\\ln\\left(x-" + B + "\\right)+" + C,
         sqrt: "y=" + A + "\\sqrt{x-" + B + "}+" + C,
         absLinear: "y=" + A + "\\left|x-" + B + "\\right|+" + C,
-        absQuadratic: "y=\\left|" + A + "\\left(x-" + B + "\\right)^2+" + C + "\\right|+" + D,
+        absQuadratic: "y=\\left|" + A + "\\left(x-" + B + "\\right)^{2}+" + C + "\\right|+" + D,
         sin: "y=" + A + "\\sin\\left(" + B + "x+" + C + "\\right)+" + D,
         cos: "y=" + A + "\\cos\\left(" + B + "x+" + C + "\\right)+" + D,
         tan: "y=" + A + "\\tan\\left(" + B + "x+" + C + "\\right)+" + D
@@ -4354,13 +4354,13 @@
       }
       const eq = {
         linear: "y = " + a.toFixed(1) + "x + " + b.toFixed(1),
-        quadratic: "y = " + a.toFixed(1) + "(x - " + b.toFixed(1) + ")^2 + " + c.toFixed(1),
-        cubic: "y = " + a.toFixed(1) + "(x - " + b.toFixed(1) + ")^3 + " + c.toFixed(1),
-        exp: "y = " + a.toFixed(1) + "e^x + " + b.toFixed(1),
+        quadratic: "y = " + a.toFixed(1) + "(x - " + b.toFixed(1) + ")^{2} + " + c.toFixed(1),
+        cubic: "y = " + a.toFixed(1) + "(x - " + b.toFixed(1) + ")^{3} + " + c.toFixed(1),
+        exp: "y = " + a.toFixed(1) + "e^{x} + " + b.toFixed(1),
         log: "y = " + a.toFixed(1) + "ln(x - " + b.toFixed(1) + ") + " + c.toFixed(1),
         sqrt: "y = " + a.toFixed(1) + "sqrt(x - " + b.toFixed(1) + ") + " + c.toFixed(1),
         absLinear: "y = " + a.toFixed(1) + "|x - " + b.toFixed(1) + "| + " + c.toFixed(1),
-        absQuadratic: "y = |" + a.toFixed(1) + "(x - " + b.toFixed(1) + ")^2 + " + c.toFixed(1) + "| + " + d.toFixed(1),
+        absQuadratic: "y = |" + a.toFixed(1) + "(x - " + b.toFixed(1) + ")^{2} + " + c.toFixed(1) + "| + " + d.toFixed(1),
         sin: "y = " + a.toFixed(1) + "sin(" + b.toFixed(1) + "x + " + c.toFixed(1) + ") + " + d.toFixed(1),
         cos: "y = " + a.toFixed(1) + "cos(" + b.toFixed(1) + "x + " + c.toFixed(1) + ") + " + d.toFixed(1),
         tan: "y = " + a.toFixed(1) + "tan(" + b.toFixed(1) + "x + " + c.toFixed(1) + ") + " + d.toFixed(1)
@@ -4432,9 +4432,9 @@
         label(ctx, "sec theta = 1 / cos theta", 44, 115, "#173754");
         label(ctx, "cot theta = 1 / tan theta", 44, 160, "#173754");
       } else if (type === "identity") {
-        label(ctx, "sin^2 theta + cos^2 theta = 1", 44, 70, "#2077ff");
-        label(ctx, "1 + tan^2 theta = sec^2 theta", 44, 115, "#00a8a8");
-        label(ctx, "1 + cot^2 theta = cosec^2 theta", 44, 160, "#ff6f61");
+        label(ctx, "sin^{2} theta + cos^{2} theta = 1", 44, 70, "#2077ff");
+        label(ctx, "1 + tan^{2} theta = sec^{2} theta", 44, 115, "#00a8a8");
+        label(ctx, "1 + cot^{2} theta = cosec^{2} theta", 44, 160, "#ff6f61");
       } else if (type === "complementary") {
         label(ctx, "theta + (90 degrees - theta) = 90 degrees", 44, 70, "#173754");
         label(ctx, "sin theta = cos(90 degrees - theta)", 44, 115, "#2077ff");
@@ -4468,9 +4468,9 @@
         label(ctx, "cos(-theta) = cos theta", 44, 92, "#2077ff");
         label(ctx, "tan(-theta) = -tan theta", 44, 126, "#00a8a8");
       } else if (type === "identityFamily") {
-        label(ctx, "sin^2 theta + cos^2 theta = 1", 44, 58, "#2077ff");
-        label(ctx, "divide by cos^2 theta -> 1 + tan^2 theta = sec^2 theta", 44, 94, "#00a8a8");
-        label(ctx, "divide by sin^2 theta -> cot^2 theta + 1 = cosec^2 theta", 44, 130, "#ff6f61");
+        label(ctx, "sin^{2} theta + cos^{2} theta = 1", 44, 58, "#2077ff");
+        label(ctx, "divide by cos^{2} theta -> 1 + tan^{2} theta = sec^{2} theta", 44, 94, "#00a8a8");
+        label(ctx, "divide by sin^{2} theta -> cot^{2} theta + 1 = cosec^{2} theta", 44, 130, "#ff6f61");
       } else {
         label(ctx, angle >= 0 ? "positive angle" : "negative angle", 44, 58, "#173754");
         label(ctx, "anticlockwise is positive, clockwise is negative", 44, 92, "#173754");
@@ -4514,12 +4514,12 @@
       if (has(["range", "值域", "y-value", "y value"])) return opener + "range means the y-values reached by the graph. Scan from bottom to top. Constant has range {k}, quadratic starts from its vertex, exponential has y>0 before shifts, and tangent has all real y-values.";
       if (has(["constant", "y=k"])) return "For f(x)=k, the graph is a horizontal line. Domain is R and range is {k}.";
       if (has(["linear", "straight", "slope", "gradient", "直线"])) return "For f(x)=ax+b with a not equal 0, the graph is a straight line. Domain is R and range is R. a controls slope and b is the y-intercept.";
-      if (has(["quadratic", "parabola", "x^2", "二次"])) return "For f(x)=ax^2+bx+c, sketch a parabola. If a>0 it opens upward and has a minimum; if a<0 it opens downward and has a maximum. Domain is R.";
-      if (has(["cubic", "x^3", "三次"])) return "A cubic graph has an S-like shape. In the PDF framework, its domain is R and range is R.";
+      if (has(["quadratic", "parabola", "x^{2}", "x^2", "二次"])) return "For f(x)=ax^{2}+bx+c, sketch a parabola. If a>0 it opens upward and has a minimum; if a<0 it opens downward and has a maximum. Domain is R.";
+      if (has(["cubic", "x^{3}", "x^3", "三次"])) return "A cubic graph has an S-like shape. In the PDF framework, its domain is R and range is R.";
       if (has(["absolute", "modulus", "|x|", "绝对值"])) return "An absolute graph f(x)=|x-a| is V-shaped. The vertex is at x=a. Basic domain is R and range is [0,infinity).";
       if (has(["rational", "reciprocal", "1/x", "asymptote", "渐近线"])) return "For f(x)=1/(ax-b), the vertical asymptote is x=b/a. Domain excludes b/a, and range excludes 0. Sketch two branches approaching the asymptotes.";
       if (has(["surd", "sqrt", "square root", "根号", "√"])) return "For surd graphs, make the expression inside the square root non-negative. sqrt(x-a) has domain [a,infinity) and range [0,infinity); -sqrt(x-a) has range (-infinity,0].";
-      if (has(["exponential", "e^x", "e power", "指数"])) return "For y=e^x, domain is R, range is (0,infinity), and the horizontal asymptote is y=0. Reflections like -e^x move the graph below the x-axis.";
+      if (has(["exponential", "e^{x}", "e^x", "e power", "指数"])) return "For y=e^{x}, domain is R, range is (0,infinity), and the horizontal asymptote is y=0. Reflections like -e^{x} move the graph below the x-axis.";
       if (has(["ln", "log", "logarithm", "对数"])) return "For y=ln x, domain is (0,infinity), range is R, and x=0 is a vertical asymptote. ln(-x) is the reflected logarithmic graph on the left side.";
       if (has(["sin", "sine", "正弦"])) return "For y=sin x, domain is R, range is [-1,1], period is 2pi, and x-intercepts are n pi.";
       if (has(["cos", "cosine", "余弦"])) return "For y=cos x, domain is R, range is [-1,1], period is 2pi, and the y-intercept is 1.";
@@ -4529,7 +4529,7 @@
       if (has(["desmos", "slider", "adjust", "滑杆", "调整"])) return "Open the Graph Adjuster section. Move a, b, c and d: a changes steepness/amplitude/reflection, b often affects horizontal shift or period, c shifts trig graphs, and d moves the graph up or down.";
       if (has(["practice", "quiz", "test me", "练习"])) return "Practice question: Identify the function type and domain for y=sqrt(x-3). The key is x-3>=0, so the graph starts at x=3.";
       if (slide) return `This page is about ${slide.title}. ${slide.text} Focus on these PDF-style graph facts: ${slide.keys.join(" ")}`;
-      return "Send me a function or graph feature, for example y=1/(x-2), y=sqrt(5-x), y=e^x, y=ln x, y=sin x, or y=a(x-h)^2+k. I will help identify the graph type, domain and range.";
+      return "Send me a function or graph feature, for example y=1/(x-2), y=sqrt(5-x), y=e^{x}, y=ln x, y=sin x, or y=a(x-h)^{2}+k. I will help identify the graph type, domain and range.";
     }
 
     function selectTeacherVoice() {
